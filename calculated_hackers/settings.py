@@ -59,8 +59,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
 ]
+
+# When debug is set to true, use livereload to refresh browser on server restart
+if os.environ.get('DJANGO_DEBUG') == 'True':
+    # inserts livereload app before django.contrib.staticfiles
+    INSTALLED_APPS.insert(5, 'livereload')
+    # adds livereload middleware to an end of list
+    MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
 
 ROOT_URLCONF = 'calculated_hackers.urls'
 
