@@ -8,3 +8,9 @@ assignees: ''
 ---
 
 As a **role**, I would like to **goal/desire**
+
+## Acceptance criteria
+
+- criteria 1
+- criteria 2
+- criteria 3
