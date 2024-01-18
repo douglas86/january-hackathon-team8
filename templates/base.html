@@ -4,6 +4,8 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,10 +25,17 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
+
 </head>
 <body>
 
-<header><h1>This is the header</h1></header>
+<header>
+    <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+      <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top logo">
+  </div>
+</nav>
+</header>
 
 <main>
     {% block content %}

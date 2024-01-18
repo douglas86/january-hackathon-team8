@@ -1,0 +1,7 @@
+/*header*/
+.logo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    padding: 2rem;
+}
