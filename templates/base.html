@@ -5,7 +5,6 @@
 {% url 'account_logout' as logout_url %}
 
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Base Template</title>
 
+    {#    fontawesome link#}
+    <script src="https://kit.fontawesome.com/a254ad7cf6.js" crossorigin="anonymous"></script>
+
     <!--    Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -23,6 +25,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"></script>
 
+    {#    css styling#}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
 
@@ -31,10 +34,15 @@
 
 <header>
     <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-      <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top logo">
-  </div>
-</nav>
+        <div class="logo-container">
+            <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24"
+             class="d-inline-block align-text-top logo">
+        </div>
+        <h1 class="title">Calculated Hackers</h1>
+        <div class="icons">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+    </nav>
 </header>
 
 <main>
