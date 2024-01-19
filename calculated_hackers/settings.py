@@ -35,7 +35,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.herokuapp.com',
     'https://8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
-    '8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io'
+    '8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
+    '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io'
 ]
 
 
