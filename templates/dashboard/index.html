@@ -15,6 +15,7 @@
         <tbody>
         {% for bill in bills %}
             <tr>
+                <td>{{ bill.id }}</td>
                 <th>{{ forloop.counter }}</th>
                 <td>{{ bill.title | title }}</td>
                 <td>£ {{ bill.amount }}</td>
