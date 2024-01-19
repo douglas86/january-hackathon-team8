@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    {% load static %}
-
     <table class="table">
         <thead>
         <tr>
@@ -17,9 +16,9 @@
         {% for bill in bills %}
             <tr>
                 <th>{{ forloop.counter }}</th>
-                <td>{{ bill.title }}</td>
+                <td>{{ bill.title | title }}</td>
                 <td>£ {{ bill.amount }}</td>
-                <td>{{ bill.due_date }}</td>
+                <td>{{ bill.due_date|date:'d-m-Y' }}</td>
                 <td>
                     {% if bill.status == True %}
                         <i class="fa-solid fa-check"></i>
@@ -27,7 +26,12 @@
                         <i class="fa-regular fa-circle-xmark"></i>
                     {% endif %}
                 </td>
-
+                <td>
+                    <button type="button" class="btn btn-secondary">Edit</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
