@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 class UpcomingBill(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    due_date = models.DateField(auto_now=True)
+    due_date = models.DateField()
     amount = models.DecimalField(max_digits=6, decimal_places=2)
-    status = models.BooleanField(default=False)
+    status = models.BooleanField(default=False, editable=False)
 
     class Meta:
         ordering = ['-due_date']
