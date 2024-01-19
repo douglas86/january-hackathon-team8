@@ -39,7 +39,6 @@ ALLOWED_HOSTS = [
     '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io'
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -99,7 +98,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'calculated_hackers.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -113,7 +111,6 @@ WSGI_APPLICATION = 'calculated_hackers.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -135,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -146,7 +142,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
