@@ -8,3 +8,9 @@ class UpcomingBill(models.Model):
     title = models.CharField(max_length=200)
     due_date = models.DateField(auto_now=True)
     status = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-due_date']
+
+    def __str__(self):
+        return self.title
