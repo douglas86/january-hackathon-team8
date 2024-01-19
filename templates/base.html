@@ -36,10 +36,25 @@
     <nav class="navbar bg-body-tertiary">
         <div class="logo-container">
             <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24"
-             class="d-inline-block align-text-top logo">
+                 class="d-inline-block align-text-top logo">
         </div>
         <h1 class="title">Calculated Hackers</h1>
         <div class="icons">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                       href="{% url 'account_logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                       href="{% url 'account_signup' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                       href="{% url 'account_login' %}">Login</a>
+                </li>
+            {% endif %}
             <i class="fa-solid fa-bell"></i>
         </div>
     </nav>
