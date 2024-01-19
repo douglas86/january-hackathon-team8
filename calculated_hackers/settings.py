@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'finance',
+    'dashboard',
 ]
 
 SITE_ID = 1

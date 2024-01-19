@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from finance.views import Finance
 
 urlpatterns = [
-    path('finance/', Finance.as_view(), name='finance'),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
+    path('dashboard/', include('dashboard.urls')),
 ]
