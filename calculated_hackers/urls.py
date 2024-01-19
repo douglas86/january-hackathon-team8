@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from dashboard.views import Dashboard
 
 urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
-    path('dashboard/', Dashboard.as_view(), name='dashboard'),
+    path('dashboard/', include('dashboard.urls')),
 ]
