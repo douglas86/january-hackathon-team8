@@ -1,3 +1,24 @@
-body {
-    background-color: blue;
+/*header*/
+nav {
+    display: flex;
+}
+.logo-container {
+    width: 10%;
+}
+.logo {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    padding: 2rem;
+}
+.title {
+    width: 80%;
+    margin: auto;
+    font-size: 3rem;
+    text-align: center;
+}
+.icons {
+    width: 10%;
+    font-size: 2rem;
+    margin: auto;
 }
