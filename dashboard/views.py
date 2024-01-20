@@ -22,5 +22,9 @@ class EditDashboard(UpdateView):
     """
     View to edit the dashboard of the titled document
     """
-    model = UpcomingBill
-    fields = ['id', 'title', 'amount', 'due_date']
+    template_name = 'dashboard/index.html'
+    success_url = "/"
+
+    def form_valid(self, form):
+        form.send_email(self.request.user)
+        return super(EditDashboard, self).form_valid(form)
