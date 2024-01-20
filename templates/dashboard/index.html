@@ -3,25 +3,25 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-
+    <!-- Code to display tabs -->
     <div class="tab-container">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#upcomingBills">Upcoming Bills</a>
+                <a class="nav-link active text-grey" data-toggle="tab" href="#upcomingBills">Upcoming Bills</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
+                <a class="nav-link text-grey" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#monthlyIncome">Monthly Income</a>
+                <a class="nav-link text-grey" data-toggle="tab" href="#monthlyIncome">Monthly Income</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#charts">Charts</a>
+                <a class="nav-link text-grey" data-toggle="tab" href="#charts">Charts</a>
             </li>
         </ul>
 
         <div class="tab-content">
-            <!-- Upcoming Bills Tab -->
+            <!-- Upcoming Bills Tab Content -->
             <div id="upcomingBills" class="container tab-pane active">
                 <section class="dashboard">
                     <h1>Upcoming Bills</h1>
@@ -110,6 +110,7 @@
         </div>
     </div>
     {% else %}
+    <!-- Start Page -->
     <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
         <div class="hero-text-box text-center">
             <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in to start your journey towards financial freedom and balance</h3>

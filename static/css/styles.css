@@ -1,5 +1,10 @@
-/*header*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
 
+/* Header Styles */
 .logo {
     width: 8rem;
     height: 8rem;
@@ -25,6 +30,10 @@
     cursor: pointer;
 }
 
+.fa:hover {
+    color: #fa6e06;
+}
+
 .navbar-brand {
     margin: 0;
     padding: 0;
@@ -46,13 +55,7 @@
     padding-right: 10%;
 }
 
-/* Styles for the signup page */
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-}
+/* Hero Section Styles */
 
 #hero {
     position: relative;
@@ -84,10 +87,6 @@ p {
     color: #555;
 }
 
-form {
-    margin-top: 20px;
-}
-
 /* Style form fields */
 form input[type="text"],
 form input[type="password"] {
@@ -107,6 +106,10 @@ form button {
     cursor: pointer;
 }
 
+form button:hover {
+    color: #fa6e06;
+}
+
 /* Style social account login section */
 .social-login {
     margin-top: 20px;
@@ -119,28 +122,36 @@ form button {
     color: #007bff;
 }
 
+/* Container Styles */
+form {
+    margin-top: 20px;
+}
+
 .dashboard {
     margin-top: 10px;
 }
 
 .login-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .tab-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .logout-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .signup-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 /* Footer Styles */
-
 footer {
     position: fixed;
     bottom: 0;
@@ -157,7 +168,6 @@ footer {
 }
 
 /* General Styles */
-
 .green-background {
     background-color: #244c3c !important;
 }
@@ -167,4 +177,20 @@ footer {
     font-weight: bold;
 }
 
-/* End of Styles for the signup page */
+.text-cream:hover {
+    color: #fa6e06;
+}
+
+.text-title {
+    color: #dcdcbb;
+    font-weight: bold;
+}
+
+.text-grey {
+    color: #425e6a;
+    font-weight: bold;
+}
+
+.text-grey:hover {
+    color: #fa6e06;
+}
