@@ -5,76 +5,77 @@
     {% if user.is_authenticated %}
         <h1>Upcoming Bills</h1>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="container-fluid">
             {% for bill in bills %}
-                <tr>
-                    <th>{{ forloop.counter }}</th>
-                    <td>{{ bill.title | title }}</td>
-                    <td>£ {{ bill.amount }}</td>
-                    <td>{{ bill.due_date|date:'d-m-Y' }}</td>
-                    <td>
-                        {% if bill.status == True %}
-                            <i class="fa-solid fa-check"></i>
-                        {% else %}
-                            <i class="fa-regular fa-circle-xmark"></i>
-                        {% endif %}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#modal-{{ bill.id }}">Edit
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-
-                <!-- Modal -->
-                <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form action="">
-                                <div class="modal-body">
-                                    <form method="post" action="">
-                                        {% csrf_token %}
-                                        {{ form.as_p }}
-                                        <label for="title"></label>
-                                        <input id="title" name="title" value="{{ bill.title }}">
-                                        <br>
-                                        <label for="amount"></label>
-                                        <input id="amount" name="amount" value="{{ bill.amount }}">
-                                        <br>
-                                        <label for="date">The current date is set to: {{ bill.due_date }}</label>
-                                        <br>
-                                        <input id="date" name="date" type="date" value="{{ bill.due_date }}">
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" href="{{ bill.id }}" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
+            <div class="row mb-3">
+                <div class="col">
+                    <strong> #{{ forloop.counter }}</strong>
+                </div>
+                <div class="col">
+                    <strong>Title:</strong> {{ bill.title | title }}
+                </div>
+                <div class="col">
+                    <strong>Amount:</strong> £{{ bill.amount }}
+                </div>
+                <div class="col">
+                    <strong>Date:</strong> {{ bill.due_date|date:'d-m-Y' }}
+                </div>
+                <div class="col">
+                    <strong>Status:</strong>
+                    {% if bill.status == True %}
+                    <i class="fa-solid fa-check"></i>
+                    {% else %}
+                    <i class="fa-regular fa-circle-xmark"></i>
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#modal-{{ bill.id }}">Edit
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
+                        <form method="post" action="">
+                            <div class="modal-body">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title" value="{{ bill.title }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="amount" class="form-label">Amount</label>
+                                    <input type="text" class="form-control" id="amount" name="amount" value="{{ bill.amount }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="date" class="form-label">Due Date</label>
+                                    <input type="date" class="form-control" id="date" name="date" value="{{ bill.due_date }}">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" href="{{ bill.id }}" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
             {% endfor %}
-            </tbody>
-        </table>
+        </div>
+        
     {% else %}
         <h1>Please log in or register</h1>
     {% endif %}
