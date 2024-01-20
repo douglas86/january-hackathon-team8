@@ -16,6 +16,12 @@
     .footer-container {
         max-width: 70%;
     }
+    .dashboard {
+        margin-top: 150px;
+    }
+    .container {
+        margin-top: 150px;
+    }
 }
 
 

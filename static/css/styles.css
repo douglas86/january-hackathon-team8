@@ -112,6 +112,14 @@ form button {
     color: #007bff;
 }
 
+.dashboard {
+    margin-top: 80px;
+}
+
+.container {
+    margin-top: 80px;
+}
+
 /* Footer Styles */
 
 footer {
@@ -138,10 +146,6 @@ footer {
 .text-cream {
     color: #dcdcbb;
     font-weight: bold;
-}
-
-.container {
-    margin-top: 30%;
 }
 
 /* End of Styles for the signup page */

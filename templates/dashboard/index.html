@@ -3,6 +3,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
+    <section class="dashboard">
         <h1>Upcoming Bills</h1>
 
         <table class="table">
@@ -75,6 +76,7 @@
             {% endfor %}
             </tbody>
         </table>
+    </section>
     {% else %}
     <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
         <div class="hero-text-box text-center">
