@@ -36,10 +36,21 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
     'https://8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
     '8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
-    '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io'
+    '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io',
+    '8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io',
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/*',
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/accounts/login/'
 ]
 
 # Application definition
+
+CORS_ALLOWED_ORIGINS = [
+    "https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,6 +63,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'corsheaders',
     'dashboard',
 ]
 
@@ -69,14 +81,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
+
 # When debug is set to true, use livereload to refresh browser on server restart
-if os.environ.get('DJANGO_DEBUG') == 'True':
+#if os.environ.get('DJANGO_DEBUG') == 'True':
     # inserts livereload app before django.contrib.staticfiles
-    INSTALLED_APPS.insert(5, 'livereload')
+    #INSTALLED_APPS.insert(5, 'livereload')
     # adds livereload middleware to an end of list
-    MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
+   # MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
 
 ROOT_URLCONF = 'calculated_hackers.urls'
 
