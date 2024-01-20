@@ -3,7 +3,28 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Upcoming Bills</h1>
+
+    <div class="tab-container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#upcomingBills">Upcoming Bills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#monthlyIncome">Monthly Income</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#charts">Charts</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- Upcoming Bills Tab -->
+            <div id="upcomingBills" class="container tab-pane active">
+                <section class="dashboard">
+                    <h1>Upcoming Bills</h1>
 
         <table class="table">
             <thead>
@@ -75,6 +96,19 @@
             {% endfor %}
             </tbody>
         </table>
+                </section>
+            </div>
+            <div id="monthlyExpenses" class="container tab-pane fade">
+                <!-- Code for the "Monthly Expenses" tab goes here -->
+            </div>
+            <div id="monthlyIncome" class="container tab-pane fade">
+                <!-- Code for the "Monthly Income" tab goes here -->
+            </div>
+            <div id="charts" class="container tab-pane fade">
+                <!-- Code for the "Charts" tab goes here -->
+            </div>
+        </div>
+    </div>
     {% else %}
     <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
         <div class="hero-text-box text-center">

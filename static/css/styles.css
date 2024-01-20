@@ -18,6 +18,13 @@
     margin: auto;
 }
 
+.fa {
+    font-size: 30px;
+    padding-right: 15px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
 .navbar-brand {
     margin: 0;
     padding: 0;
@@ -92,8 +99,8 @@ form input[type="password"] {
 
 /* Style submit button */
 form button {
-    background-color: #fa6e06;
-    color: #fff;
+    background-color: #244c3c;
+    color: #dcdcbb;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -110,6 +117,26 @@ form button {
     margin-right: 10px;
     text-decoration: none;
     color: #007bff;
+}
+
+.dashboard {
+    margin-top: 10px;
+}
+
+.login-container {
+    margin-top: 80px;
+}
+
+.tab-container {
+    margin-top: 80px;
+}
+
+.logout-container {
+    margin-top: 80px;
+}
+
+.signup-container {
+    margin-top: 80px;
 }
 
 /* Footer Styles */
@@ -138,10 +165,6 @@ footer {
 .text-cream {
     color: #dcdcbb;
     font-weight: bold;
-}
-
-.container {
-    margin-top: 30%;
 }
 
 /* End of Styles for the signup page */
