@@ -2,6 +2,7 @@ from django import forms
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UpcomingBill
+from .forms import EditDashboardForm
 from django.shortcuts import get_object_or_404
 
 
@@ -32,10 +33,3 @@ class Dashboard(View):
                 return render(request, self.template_name)
         except Exception as e:
             print(e)
-
-
-class EditDashboardForm(forms.ModelForm):
-    class Meta:
-        model = UpcomingBill
-        fields = '__all__'
-        widgets = {'due_date': forms.DateInput(attrs={'type': 'date'})}
