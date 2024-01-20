@@ -1,5 +1,7 @@
+from django import forms
 from django.http import request
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView
 from .models import UpcomingBill
 
@@ -18,13 +20,20 @@ class Dashboard(ListView):
         return {'bills': self.get_queryset()}
 
 
+class EditDashboardForm(forms.ModelForm):
+    class Meta:
+        model = UpcomingBill
+        fields = '__all__'
+
+
 class EditDashboard(UpdateView):
     """
     View to edit the dashboard of the titled document
     """
+    model = UpcomingBill
+    form_class = EditDashboardForm
     template_name = 'dashboard/index.html'
-    success_url = "/"
+    success_url = '/'
 
-    def form_valid(self, form):
-        form.send_email(self.request.user)
-        return super(EditDashboard, self).form_valid(form)
+    def get_object(self, queryset=None):
+        return UpcomingBill.objects.get(pk=self.kwargs['pk'])
