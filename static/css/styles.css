@@ -95,4 +95,10 @@ form button {
 
 /* End of Styles for the signup page */
 
+/* General Styles */
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
