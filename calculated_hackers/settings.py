@@ -44,6 +44,14 @@ ALLOWED_HOSTS = [
 
 # Application definition
 
+CORS_ALLOWED_ORIGINS = [
+    "https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io'
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,8 +63,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dashboard',
     'corsheaders',
+    'dashboard',
 ]
 
 SITE_ID = 1
@@ -77,9 +85,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io",
-]
 
 # When debug is set to true, use livereload to refresh browser on server restart
 #if os.environ.get('DJANGO_DEBUG') == 'True':
