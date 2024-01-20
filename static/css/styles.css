@@ -140,13 +140,8 @@ footer {
     font-weight: bold;
 }
 
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-        margin: 20px;
-    }
+.container {
+    margin-top: 30%;
 }
 
 /* End of Styles for the signup page */
