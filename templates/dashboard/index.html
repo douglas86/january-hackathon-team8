@@ -76,7 +76,12 @@
             </tbody>
         </table>
     {% else %}
-        <h1>Please log in or register</h1>
+    <section id="hero" class="d-flex justify-content-center align-items-center">
+        <div class="hero-text-box text-center">
+            <h2>BalanceBuddy</h2>
+            <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in to start your journey towards financial freedom and balance</h3>
+        </div>
+    </section>   
     {% endif %}
 
     <script src="{% static 'js/dashboard.js' %}"></script>
