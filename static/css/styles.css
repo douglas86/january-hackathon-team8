@@ -22,6 +22,7 @@
     font-size: 30px;
     padding-right: 15px;
     margin-top: 8px;
+    cursor: pointer;
 }
 
 .navbar-brand {
@@ -98,8 +99,8 @@ form input[type="password"] {
 
 /* Style submit button */
 form button {
-    background-color: #fa6e06;
-    color: #fff;
+    background-color: #244c3c;
+    color: #dcdcbb;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -131,6 +132,10 @@ form button {
 }
 
 .logout-container {
+    margin-top: 80px;
+}
+
+.signup-container {
     margin-top: 80px;
 }
 
