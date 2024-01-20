@@ -2,3 +2,7 @@ SuperUser
 Username: team8
 Password: IAMininGLOrN
 email address: team8@gmail.com
+
+Additional Users:
+Username: douglas
+Password: IAMininGLOrN
