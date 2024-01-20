@@ -5,7 +5,6 @@ from .models import UpcomingBill
 from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
-@csrf_protect
 class Dashboard(ListView):
     template_name = 'dashboard/index.html'
 
@@ -19,7 +18,7 @@ class Dashboard(ListView):
         return {'bills': self.get_queryset()}
 
 
-class EditDashboard(UpdateView):
+class EditDashboard(ListView):
     """
     View to edit the dashboard of the titled document
     """

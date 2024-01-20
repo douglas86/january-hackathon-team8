@@ -54,14 +54,14 @@
                                         {% csrf_token %}
                                         {{ form.as_p }}
                                         <label for="title"></label>
-                                        <input id="title" value="{{ bill.title }}">
+                                        <input id="title" name="title" value="{{ bill.title }}">
                                         <br>
                                         <label for="amount"></label>
-                                        <input id="amount" value="{{ bill.amount }}">
+                                        <input id="amount" name="amount" value="{{ bill.amount }}">
                                         <br>
                                         <label for="date">The current date is set to: {{ bill.due_date }}</label>
                                         <br>
-                                        <input id="date" type="date" value="{{ bill.due_date }}">
+                                        <input id="date" name="date" type="date" value="{{ bill.due_date }}">
                                     </form>
                                 </div>
                                 <div class="modal-footer">

@@ -1,1 +1,3 @@
-console.log('this is the dashboard')
+const title = document.getElementById('title')
+
+console.log('title', title.innerText)
