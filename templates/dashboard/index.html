@@ -16,7 +16,6 @@
             </tr>
             </thead>
             <tbody>
-{#            'for x in y': for f, bill in zip(form, bills)#}
             {% for f, bill in my_list %}
                 <tr>
                     <th>{{ forloop.counter }}</th>
@@ -31,9 +30,6 @@
                         {% endif %}
                     </td>
                     <td>
-                        {#                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"#}
-                        {#                                data-bs-target="#modal-{{ bill.id }}">Edit#}
-                        {#                        </button>#}
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ bill.id }}">
                             Edit
                         </button>
@@ -58,15 +54,6 @@
                             <form method="post" id="bill_form" action="{% url 'edit_model' bill.id %}">
                                 {% csrf_token %}
                                 {{ f.as_p }}
-{#                                <label for="title"></label>#}
-{#                                <input id="title" name="title" value="{{ bill.title }}">#}
-{#                                <br>#}
-{#                                <label for="amount"></label>#}
-{#                                <input id="amount" name="amount" value="{{ bill.amount }}">#}
-{#                                <br>#}
-{#                                <label for="date">The current date is set to: {{ bill.due_date }}</label>#}
-{#                                <br>#}
-{#                                <input id="due_date" name="due_date" type="date" value="{{ bill.due_date }}">#}
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
                                 </button>
                                 <button type="submit"
@@ -76,37 +63,6 @@
                         </div>
                     </div>
                 </div>
-                {#                <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"#}
-                {#                     aria-hidden="true">#}
-                {#                    <div class="modal-dialog">#}
-                {#                        <div class="modal-content">#}
-                {#                            <div class="modal-header">#}
-                {#                                <h1 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h1>#}
-                {#                                <button type="button" class="btn-close" data-bs-dismiss="modal"#}
-                {#                                        aria-label="Close"></button>#}
-                {#                            </div>#}
-                {#                            <div class="modal-body">#}
-                {#                                <form method="post" action="">#}
-                {#                                    {% csrf_token %}#}
-                {#                                    {{ form.as_p }}#}
-                {#                                    <label for="title"></label>#}
-                {#                                    <input id="title" value="{{ bill.title }}">#}
-                {#                                    <br>#}
-                {#                                    <label for="amount"></label>#}
-                {#                                    <input id="amount" value="{{ bill.amount }}">#}
-                {#                                    <br>#}
-                {#                                    <label for="date">The current date is set to: {{ bill.due_date }}</label>#}
-                {#                                    <br>#}
-                {#                                    <input id="date" type="date" value="{{ bill.due_date }}">#}
-                {#                                </form>#}
-                {#                            </div>#}
-                {#                            <div class="modal-footer">#}
-                {#                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
-                {#                                <button type="submit" href="{{ bill.id }}" class="btn btn-primary">Save changes</button>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                </div>#}
             {% endfor %}
             </tbody>
         </table>
@@ -118,26 +74,5 @@
             </div>
         </section>
     {% endif %}
-
-    {#    <script>#}
-    {#        $(document).ready(function () {#}
-    {#            // Ajax function#}
-    {#            $("#edit_dashboard").click(function (e) {#}
-    {#                e.preventDefault()#}
-    {#                $.ajax({#}
-    {#                    url: $('#edit_dashboard').data('url'),  // Replace with your server endpoint#}
-    {#                    type: "GET",#}
-    {#                    data: $('#bill_form').serialize(),#}
-    {#                    success: function (data) {#}
-    {#                        console.log("Success:", data);#}
-    {#                        // Process the data or update the UI here#}
-    {#                    },#}
-    {#                    error: function (xhr, status, error) {#}
-    {#                        console.error("Error:", status, error);#}
-    {#                    }#}
-    {#                });#}
-    {#            });#}
-    {#        });#}
-    {#    </script>#}
 
 {% endblock content %}
