@@ -51,6 +51,8 @@
                             <form action="">
                                 <div class="modal-body">
                                     <form method="post" action="">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
                                         <label for="title"></label>
                                         <input id="title" value="{{ bill.title }}">
                                         <br>
