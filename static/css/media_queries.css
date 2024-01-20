@@ -17,9 +17,12 @@
         max-width: 70%;
     }
     .dashboard {
+        margin-top: 10px;
+    }
+    .login-container {
         margin-top: 150px;
     }
-    .container {
+    .tab-container {
         margin-top: 150px;
     }
 }

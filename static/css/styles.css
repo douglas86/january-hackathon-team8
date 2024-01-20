@@ -113,10 +113,14 @@ form button {
 }
 
 .dashboard {
-    margin-top: 80px;
+    margin-top: 10px;
 }
 
 .login-container {
+    margin-top: 80px;
+}
+
+.tab-container {
     margin-top: 80px;
 }
 
