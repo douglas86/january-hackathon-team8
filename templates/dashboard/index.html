@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+    <h1>Upcoming Bills</h1>
+
     <table class="table">
         <thead>
         <tr>
@@ -15,7 +17,6 @@
         <tbody>
         {% for bill in bills %}
             <tr>
-                <td>{{ bill.id }}</td>
                 <th>{{ forloop.counter }}</th>
                 <td>{{ bill.title | title }}</td>
                 <td>£ {{ bill.amount }}</td>
@@ -43,13 +44,22 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="">
                             <div class="modal-body">
-                                {{ bill.id }}
-                                {{ bill.title }}
+                                <form method="post" action="">
+                                    <label for="title"></label>
+                                    <input id="title" value="{{ bill.title }}">
+                                    <br>
+                                    <label for="amount"></label>
+                                    <input id="amount" value="{{ bill.amount }}">
+                                    <br>
+                                    <label for="date">The current date is set to: {{ bill.due_date }}</label>
+                                    <br>
+                                    <input id="date" type="date" value="{{ bill.due_date }}">
+                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
