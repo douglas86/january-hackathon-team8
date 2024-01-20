@@ -1,5 +1,10 @@
-/*header*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
 
+/* Header Styles */
 .logo {
     width: 8rem;
     height: 8rem;
@@ -46,13 +51,7 @@
     padding-right: 10%;
 }
 
-/* Styles for the signup page */
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-}
+/* Hero Section Styles */
 
 #hero {
     position: relative;
@@ -82,10 +81,6 @@ body {
 p {
     margin-top: 10px;
     color: #555;
-}
-
-form {
-    margin-top: 20px;
 }
 
 /* Style form fields */
@@ -119,6 +114,11 @@ form button {
     color: #007bff;
 }
 
+/* Container Styles */
+form {
+    margin-top: 20px;
+}
+
 .dashboard {
     margin-top: 10px;
 }
@@ -140,7 +140,6 @@ form button {
 }
 
 /* Footer Styles */
-
 footer {
     position: fixed;
     bottom: 0;
@@ -157,7 +156,6 @@ footer {
 }
 
 /* General Styles */
-
 .green-background {
     background-color: #244c3c !important;
 }
@@ -167,4 +165,7 @@ footer {
     font-weight: bold;
 }
 
-/* End of Styles for the signup page */
+.text-grey {
+    color: #425e6a;
+    font-weight: bold;
+}
