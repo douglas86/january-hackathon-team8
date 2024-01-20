@@ -1,9 +1,10 @@
 /*header*/
+
 .logo {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    padding: 2rem;
+    padding: 1rem;
 }
 .title {
     width: 80%;
@@ -12,9 +13,30 @@
     text-align: center;
 }
 .icons {
-    width: 10%;
-    font-size: 2rem;
+    width: 7%;
+    font-size: 1rem;
     margin: auto;
+}
+
+.navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+    }
+
+.navbar-toggler {
+    background-color:#dcdcbb;
+    z-index: 100;
+}
+
+.navbar-text {
+    padding-right: 10%;
 }
 
 /* Styles for the signup page */
@@ -39,10 +61,11 @@ body {
     min-height: 200px;
     padding: 10px 5px 25px 5px;
     border-radius: 8px;
-    font-size: 190%;
+    font-size: 200%;
     font-family: Arial, sans-serif;
-    background-color: rgba(250, 110, 6, 0.5);
-    margin-bottom: 50%;
+    background-color: rgba(66, 94, 106, 0.5);
+    margin-bottom: 60%;
+    margin-top: 33%;
 }
 
 .hero-text-box h3 {
@@ -117,13 +140,8 @@ footer {
     font-weight: bold;
 }
 
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-        margin: 20px;
-    }
+.container {
+    margin-top: 30%;
 }
 
 /* End of Styles for the signup page */
