@@ -30,6 +30,10 @@ body {
     cursor: pointer;
 }
 
+.fa:hover {
+    color: #fa6e06;
+}
+
 .navbar-brand {
     margin: 0;
     padding: 0;
@@ -102,6 +106,10 @@ form button {
     cursor: pointer;
 }
 
+form button:hover {
+    color: #fa6e06;
+}
+
 /* Style social account login section */
 .social-login {
     margin-top: 20px;
@@ -165,7 +173,20 @@ footer {
     font-weight: bold;
 }
 
+.text-cream:hover {
+    color: #fa6e06;
+}
+
+.text-title {
+    color: #dcdcbb;
+    font-weight: bold;
+}
+
 .text-grey {
     color: #425e6a;
     font-weight: bold;
+}
+
+.text-grey:hover {
+    color: #fa6e06;
 }
