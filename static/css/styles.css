@@ -133,18 +133,22 @@ form {
 
 .login-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .tab-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .logout-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 .signup-container {
     margin-top: 80px;
+    padding-left: 5px;
 }
 
 /* Footer Styles */
