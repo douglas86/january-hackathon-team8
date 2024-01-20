@@ -5,5 +5,5 @@ from .models import UpcomingBill
 class EditDashboardForm(forms.ModelForm):
     class Meta:
         model = UpcomingBill
-        fields = '__all__'
+        fields = ['title', 'amount', 'due_date']
         widgets = {'due_date': forms.DateInput(attrs={'type': 'date'})}
