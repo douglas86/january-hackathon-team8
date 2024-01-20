@@ -18,6 +18,12 @@
     margin: auto;
 }
 
+.fa-bell {
+    font-size: 30px;
+    padding-right: 15px;
+    margin-top: 8px;
+}
+
 .navbar-brand {
     margin: 0;
     padding: 0;
@@ -121,6 +127,10 @@ form button {
 }
 
 .tab-container {
+    margin-top: 80px;
+}
+
+.logout-container {
     margin-top: 80px;
 }
 
