@@ -59,8 +59,9 @@
                                aria-current="page"
                                href="{% url 'account_logout' %}">Logout</a>
                         </li>
-                        <li class="nav-item ">
-                            <i class="fa-solid fa-bell text-cream"></i>
+                        <li class="nav-item">
+                            <a class="text-cream nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -99,6 +100,20 @@
         </div>
     </div>
 </footer>
+    <footer class="footer mt-auto py-3 bg-light green-background">
+        <div class="footer-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="text-muted">© 2024 BalanceBuddy. All rights reserved.</span>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#" class="text-grey" style="margin-right:10px;">Legal Information</a>
+                    <a href="#" class="text-grey" style="margin-right:10px;">Privacy Policy</a>
+                    <a href="#" class="text-grey">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 <script src="{% static 'js/scripts.js' %}"></script>
 
