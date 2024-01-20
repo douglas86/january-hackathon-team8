@@ -2,9 +2,10 @@ from django.http import request
 from django.shortcuts import render
 from django.views.generic import ListView, UpdateView
 from .models import UpcomingBill
-
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
+@csrf_protect
 class Dashboard(ListView):
     template_name = 'dashboard/index.html'
 

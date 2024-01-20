@@ -36,7 +36,10 @@ ALLOWED_HOSTS = [
     '.herokuapp.com',
     'https://8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
     '8000-douglas86-januaryhackat-gj5354cutt6.ws-eu107.gitpod.io',
-    '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io'
+    '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io',
+    '8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io',
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io',
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/accounts/login/'
 ]
 
 # Application definition
