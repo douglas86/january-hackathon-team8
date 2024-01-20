@@ -16,7 +16,8 @@
             </tr>
             </thead>
             <tbody>
-            {% for bill in bills %}
+{#            'for x in y': for f, bill in zip(form, bills)#}
+            {% for f, bill in my_list %}
                 <tr>
                     <th>{{ forloop.counter }}</th>
                     <td>{{ bill.title | title }}</td>
@@ -33,7 +34,9 @@
                         {#                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"#}
                         {#                                data-bs-target="#modal-{{ bill.id }}">Edit#}
                         {#                        </button>#}
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ bill.id }}">Edit</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ bill.id }}">
+                            Edit
+                        </button>
                     </td>
                     <td>
                         <button type="button" class="btn btn-danger">Delete</button>
@@ -41,7 +44,8 @@
                 </tr>
 
                 <!-- Modal -->
-                <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+                <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" role="dialog"
+                     aria-labelledby="editModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -51,35 +55,24 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="">
-                                <div class="modal-body">
-                                    <form method="post" action="">
-                                        {% csrf_token %}
-                                        {{ form.as_p }}
-                                        <label for="title"></label>
-                                        <input id="title" name="title" value="{{ bill.title }}">
-                                        <br>
-                                        <label for="amount"></label>
-                                        <input id="amount" name="amount" value="{{ bill.amount }}">
-                                        <br>
-                                        <label for="date">The current date is set to: {{ bill.due_date }}</label>
-                                        <br>
-                                        <input id="date" name="date" type="date" value="{{ bill.due_date }}">
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" href="{{ bill.id }}" class="btn btn-primary">Save changes</button>
-                                </div>
+                            <form method="post" id="bill_form" action="{% url 'edit_model' bill.id %}">
+                                {% csrf_token %}
+                                {{ f.as_p }}
+{#                                <label for="title"></label>#}
+{#                                <input id="title" name="title" value="{{ bill.title }}">#}
+{#                                <br>#}
+{#                                <label for="amount"></label>#}
+{#                                <input id="amount" name="amount" value="{{ bill.amount }}">#}
+{#                                <br>#}
+{#                                <label for="date">The current date is set to: {{ bill.due_date }}</label>#}
+{#                                <br>#}
+{#                                <input id="due_date" name="due_date" type="date" value="{{ bill.due_date }}">#}
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="submit"
+                                        class="btn btn-primary">Save changes
+                                </button>
                             </form>
-                            <div class="modal-body">
-                                <!-- Include your form fields here -->
-                                <form method="post" action="{% url 'edit_model' bill.id %}">
-                                    {% csrf_token %}
-                                    {{ form.as_p }}
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,13 +111,33 @@
             </tbody>
         </table>
     {% else %}
-    <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
-        <div class="hero-text-box text-center">
-            <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in to start your journey towards financial freedom and balance</h3>
-        </div>
-    </section>
+        <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
+            <div class="hero-text-box text-center">
+                <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in
+                    to start your journey towards financial freedom and balance</h3>
+            </div>
+        </section>
     {% endif %}
 
-    <script src="{% static 'js/dashboard.js' %}"></script>
+    {#    <script>#}
+    {#        $(document).ready(function () {#}
+    {#            // Ajax function#}
+    {#            $("#edit_dashboard").click(function (e) {#}
+    {#                e.preventDefault()#}
+    {#                $.ajax({#}
+    {#                    url: $('#edit_dashboard').data('url'),  // Replace with your server endpoint#}
+    {#                    type: "GET",#}
+    {#                    data: $('#bill_form').serialize(),#}
+    {#                    success: function (data) {#}
+    {#                        console.log("Success:", data);#}
+    {#                        // Process the data or update the UI here#}
+    {#                    },#}
+    {#                    error: function (xhr, status, error) {#}
+    {#                        console.error("Error:", status, error);#}
+    {#                    }#}
+    {#                });#}
+    {#            });#}
+    {#        });#}
+    {#    </script>#}
 
 {% endblock content %}
