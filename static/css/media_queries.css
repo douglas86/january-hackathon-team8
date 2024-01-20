@@ -1,4 +1,3 @@
-
 @media (max-width: 600px) {
     .navbar-brand {
         display: none;
@@ -33,14 +32,8 @@
     }
 }
 
-
 @media screen and (min-width: 1900px) {
     .hero-text-box {
         margin-top: 55%;
     }
 }
-
-
-
-
-
