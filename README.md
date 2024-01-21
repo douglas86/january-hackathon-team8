@@ -142,18 +142,89 @@ The color pallette for the site was chosen because it matched the colour associa
 
 ![color-pallette](./static/images/readme-images/bb-color-pallette.png)
 
-## Technologies
+## Technologies used <hr>
 
-1. HTML - To create a basic site
-2. CSS - To create a nice, standout front-end and to give a great user experience
-4. JavaScript - To create an interactive frontend and provide logic
-3. Balsamiq - To create a wireframe
+The website is designed using following technologies:
+
+### Programming languages
+
+* HTML - the project used HTML to define structure and layout of the web page;
+* CSS - the project used CSS stylesheets to specify style of the web document elements;
+* JavaScript - the project used JavaScript to implement an interactive frontend and provide logic
+* Python - the project back-end functions are written using Python.
+
+### Libraries
+
+* [Font Awesome](https://fontawesome.com/v4.7.0/) - Font Awesome icons were used throughout the web-site.
+
+### Frameworks & Extensions
+
+* [Django](https://www.djangoproject.com/) – Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+* [Bootstrap](https://getbootstrap.com/) – Bootstrap is a web framework that focuses on simplifying the development of informative web pages.
+
+### Others
+
+* [GitHub](https://github.com/) - GitHub is a global company that provides hosting for software development version control using Git.
+* [Gitpod](https://gitpod.io/workspaces/) - One-click ready-to-code development environments for GitHub.
+* [Heroku](https://dashboard.heroku.com/) - Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps.
 
 ## Features
 
 ### Existing Features
 
+1. Content
+* Home page with introduction to app and option to login or register. 
+* Navbar/Register: Click on to open sign up page. In sign up page add username, email, password and repeat password.
+* Navbar/Login: Click on to enter username and password. Also option to go to the dashboard.
+* Footer: Footer with legal information, privacy policy and terms of service.
 
+2. Functionality
+
+* User account:
+  * Sign up / Log in / Log out (with confirmation email sent.)?
+  * Edit profile: personal information
+  * Spending history
+  * Search for a bill or expense
+  * Item filtering by categories
+
+  * Upcoming Bills:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+
+  * Monthly Expenses:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+    * Generate Charts
+
+  * Monthly Income:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+    * Generate Charts
+
+  * Charts:
+    * View spending and saving history
+
+  * Currency Converter:
+    * 
+    
+* Admin management:
+  * CRUD functionalities for Upcoming Bills
+  * CRUD functionalities for Monthly Expenses
+  * CRUD functionalities for Monthly Income
+  * CRUD functionalities for users
+  * CRUD functionalities for orders
 
 ### Features Left to Implement
 
