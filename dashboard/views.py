@@ -59,9 +59,3 @@ class DeleteDashboard(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.success_url)
-
-    # def delete(self, request, pk, *args, **kwargs):
-    #     if request.user.is_authenticated:
-    #         delete_bill = get_object_or_404(UpcomingBill, pk=pk)
-    #         delete_bill.delete()
-    #         return redirect(request, self.template_name)
