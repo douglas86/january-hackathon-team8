@@ -476,9 +476,9 @@ footer {
 
 .footer-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 2px auto;
     background-color: #dcdcbb;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 -10px 10px -10px rgba(18, 0, 0, 0.986), 0 10px 10px -10px rgb(0, 0, 0);
 }
