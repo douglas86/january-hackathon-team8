@@ -1,13 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, ListView, DetailView
 from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import UpcomingBill, Income
+from .models import UpcomingBill, Income, Expense
 from .forms import EditDashboardForm, IncomeForm
 
 
@@ -99,8 +99,9 @@ class DeleteIncomeView(View):
 
 
 @method_decorator(login_required, name='dispatch')
-class ExpenseListView(View):
+class ExpenseListView(ListView):
     """
     Expenses view
     """
+    model = Expense
     template_name = 'dashboard/expense.html'

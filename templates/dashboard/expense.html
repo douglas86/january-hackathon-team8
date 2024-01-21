@@ -2,7 +2,12 @@
 {% load static %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <div class="tab-container">
+            {% include 'dashboard/includes/dashboard-nav.html' %}
+            <h1>Expense</h1>
+        </div>
+    {% endif %}
 
-    <h1>Expense</h1>
 
 {% endblock %}

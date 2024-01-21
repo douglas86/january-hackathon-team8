@@ -91,7 +91,6 @@
                             </div>
                             <form method="post"  action="{% url 'delete_income' income.id %}">
                                 {% csrf_token %}
-                                </button>
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </div>
