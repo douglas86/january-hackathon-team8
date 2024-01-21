@@ -112,12 +112,12 @@ class ExpenseListView(View):
             expense_list = Expense.objects.filter(user=request.user)
             forms = [ExpenseForm(instance=expense) for expense in expense_list]
             my_list = zip(forms, expense_list)
-            context = {'my_list':my_list, 'form': form}
+            context = {'my_list': my_list, 'form': form}
             return render(request, self.template_name, context)
 
     def post(self, request, pk=None):
         if pk:
-            expense = get_object_or_404(Income, pk=pk, user=request.user)
+            expense = get_object_or_404(Expense, pk=pk, user=request.user)
             form = ExpenseForm(request.POST, instance=expense)
         else:
             form = ExpenseForm(request.POST)
@@ -128,3 +128,11 @@ class ExpenseListView(View):
             expense.save()
             return redirect('expense')
         return render(request, self.template_name, {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class DeleteExpenseView(View):
+    def post(self, request, pk):
+        expense = get_object_or_404(Expense, pk=pk, user=request.user)
+        expense.delete()
+        return redirect('expense')

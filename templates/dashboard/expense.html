@@ -17,26 +17,121 @@
                         </div>
 
                         {#                    Modal#}
-                        <div class="modal fade expense_form" id="new_expense" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                        <div class="modal fade expense_form" id="new_expense" tabindex="-1" role="dialog"
+                             aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title fs-5" id="exampleModalLabel">{{ user }}'s Expense</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                     </div>
                                     <form method="post" action="{% url 'expense' %}">
                                         {% csrf_token %}
                                         {{ form.as_p }}
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
                                         <button type="submit" class="btn btn-primary">Save changes</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for form, expense in my_list %}
+                                <tr>
+                                    <th>{{ forloop.counter }}</th>
+                                    <td>{{ expense.source | title }}</td>
+                                    <td>{{ expense.category }}</td>
+                                    <td>{{ expense.amount }}</td>
+                                    <td>{{ expense.description }}</td>
+                                </tr>
+
+                                <td>
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#modal-{{ expense.id }}">Edit
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#delete-modal-{{ expense.id }}" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </td>
+
+                                <div class="modal fade expense_form" id="delete-modal-{{ expense.id }}" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="editModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">
+                                                    Deleting: {{ expense.source }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Are you sure you want to delete this expense?</h5>
+                                            </div>
+                                            <form method="post" action="{% url 'delete_expense' expense.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade expense_form" id="modal-{{ expense.id }}" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="editModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title fs-5" id="exampleModalLabel">
+                                                    Editing: {{ expense.source }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <form method="post" action="{% url 'edit_expense' expense.id %}">
+                                                {% csrf_token %}
+                                                {{ form.as_p }}
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="submit"
+                                                        class="btn btn-primary">Save changes
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </section>
                 </div>
             </div>
         </div>
+    {% else %}
+        <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
+            <div class="hero-text-box text-center">
+                <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in
+                    to start your journey towards financial freedom and balance</h3>
+            </div>
+        </section>
     {% endif %}
 
 
