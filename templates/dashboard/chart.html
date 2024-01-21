@@ -6,7 +6,40 @@
         <div class="tab-container">
             {% include 'dashboard/includes/dashboard-nav.html' %}
             <h1>charts</h1>
+
+{#            <div id="jsonData" data-json="{{ expenses }}"></div>#}
+{##}
+{#            <div class="chart">#}
+{#                <canvas id="pieChart"></canvas>#}
+{#            </div>#}
+            <canvas id="pieChart" width="400" height="400"></canvas>
         </div>
     {% endif %}
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let ctx = document.getElementById('pieChart').getContext('2d');
+        let expensesData = JSON.parse('{{ context.json_response|json_script:"expensesData" }}');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: expensesData.map(item => item.category),
+                datasets: [{
+                    data: expensesData.map(item => item.total),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        // Add more colors as needed
+                    ],
+                }],
+            },
+        });
+    });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{#    <script src="{% static 'js/chart.js' %}"></script>#}
 
 {% endblock %}

@@ -1,4 +1,5 @@
-from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import DeleteView, TemplateView
@@ -12,6 +13,9 @@ from .forms import EditDashboardForm, IncomeForm, ExpenseForm, CategoryForm
 
 from .models import UpcomingBill, Income
 from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
+from django.db import models
+import json
+from django.core.serializers import serialize
 
 
 # Create your views here.
@@ -203,20 +207,27 @@ class CurConverter(View):
         return render(request, self.template_name)
 
 
-class ChartListView(TemplateView):
+class ChartListView(View):
     template_name = 'dashboard/chart.html'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        # context = super().get_context_data(**kwargs)
+        expenses = Expense.objects.values('category').annotate(total=models.Sum('amount'))
+        expense_list = list(expenses)
+        json_response = JsonResponse(expense_list, safe=False)
+        return {'json_response': json_response}
 
-        context['data'] = [
-            {
-                'id': obj.id,
-                'value': obj.date.isoformat(),
-                'date': obj.date.strftime('')
-            }
-            for obj in Expense.objects.all()
-        ]
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        return render(request, self.template_name, context)
 
-        return context
+
+
+
+
+
+
+
+
+
 
