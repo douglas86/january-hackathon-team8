@@ -16,3 +16,19 @@ class UpcomingBill(models.Model):
 
     def __str__(self):
         return self.title
+
+class Income(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    source = models.CharField(max_length=255)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    frequency = models.CharField(max_length=20, choices=[
+        ('monthly', 'Monthly'),
+        ('annual', 'Annual'),
+        ('one-time', 'One-time'),
+        ('weekly', 'Weekly'),
+    ])
+    date_received = models.DateField(format("%Y-%m-%d"), null=True)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.source} - {self.amount} ({self.frequency})"

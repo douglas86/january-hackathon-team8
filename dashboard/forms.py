@@ -1,5 +1,5 @@
 from django import forms
-from .models import UpcomingBill
+from .models import UpcomingBill, Income
 
 
 class EditDashboardForm(forms.ModelForm):
@@ -10,4 +10,15 @@ class EditDashboardForm(forms.ModelForm):
 
         labels = {
             'due_date': 'Due Date:',
+        }
+
+
+class IncomeForm(forms.ModelForm):
+    class Meta:
+        model = Income
+        fields = ['source', 'amount', 'frequency', 'date_received', 'description']
+        widgets = {'date_received': forms.DateInput(attrs={'type': 'date'})}
+
+        labels = {
+            'date_received': 'Date received:',
         }
