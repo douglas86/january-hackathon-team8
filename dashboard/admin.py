@@ -10,7 +10,7 @@ class UpcomingBillAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'name_of_category', 'icon')
+    list_display = ('id', 'name', 'icon')
 
 
 @admin.register(Expense)
