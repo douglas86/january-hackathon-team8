@@ -237,7 +237,7 @@ In the future we would like to add,
 * A feature where the user could take a photo of a receipt and the information would autofil the required fields. 
 * An account page the user could customise with a profile picture.
 * A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
-* 
+* An addition to the profile page where the user can select the currency they wish to view their finances in
 
 ## Testing
 
@@ -264,7 +264,7 @@ No errors or warnings were found when passing through the official (Jigsaw) vali
 #### WebAim Contrast checker 
 No errors or warnings were found when passing through the contrast validator.
 
-![contrast_validator](INSERT LINK)
+![contrast_validator](./static/images/readme-images/bb-contrast-val.png)
 
 ### JavaScript
 No errors or warnings were found when passing though the JSHint validator
