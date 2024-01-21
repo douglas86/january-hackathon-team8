@@ -15,20 +15,26 @@ class Dashboard(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            new_form = EditDashboardForm(request.POST)
             bills = UpcomingBill.objects.filter(user=request.user)
             form = [EditDashboardForm(instance=bill) for bill in bills]
             my_list = zip(form, bills)
-            context = {'my_list': my_list}
+            context = {'my_list': my_list, 'form': new_form}
             return render(request, self.template_name, context)
         return render(request, self.template_name)
 
 
-    def post(self, request, pk, *args, **kwargs):
-        bill = get_object_or_404(UpcomingBill, pk=pk)
-        form = EditDashboardForm(request.POST, instance=bill)
+    def post(self, request, pk=None, *args, **kwargs):
+        if pk:
+            bill = get_object_or_404(UpcomingBill, pk=pk)
+            form = EditDashboardForm(request.POST, instance=bill)
+        else:
+            form = EditDashboardForm(request.POST)
+
         try:
             if form.is_valid():
                 new_bill = form.save(commit=False)
+                new_bill.user = request.user
                 new_bill.save()
                 return redirect('dashboard')
             else:
