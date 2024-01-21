@@ -7,3 +7,7 @@ class EditDashboardForm(forms.ModelForm):
         model = UpcomingBill
         fields = ['title', 'amount', 'due_date']
         widgets = {'due_date': forms.DateInput(attrs={'type': 'date'})}
+
+        labels = {
+            'due_date': 'Due Date:',
+        }
