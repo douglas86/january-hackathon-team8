@@ -22,3 +22,26 @@ class IncomeForm(forms.ModelForm):
         labels = {
             'date_received': 'Date received:',
         }
+        
+class IncomeFilterForm(forms.Form):
+    source = forms.MultipleChoiceField(
+        choices=[(source, source) for source in Income.objects.values_list('source', flat=True).distinct()],
+        widget=forms.CheckboxSelectMultiple(),
+        required=False,
+    )
+
+    frequency = forms.ChoiceField(
+        choices=[(None, 'None')] + list(Income.FREQUENCY_CHOICES),
+        required=False,
+    )
+
+    date_from = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
+
+    date_to = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
+   
