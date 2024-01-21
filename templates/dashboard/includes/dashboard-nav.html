@@ -3,7 +3,7 @@
         <a class="nav-link text-grey {% if request.path == '/' %}active{% endif %}" href="{% url 'dashboard' %}">Upcoming Bills</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-grey" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
+        <a class="nav-link text-grey {% if request.path == '/expense' %}active{% endif %}" data-toggle="tab" href="{% url 'expense' %}">Expenses</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {% if request.path == '/income/' %}active{% endif %} text-grey" href="{% url 'income' %}">Monthly Income</a>

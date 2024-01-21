@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from .models import UpcomingBill, Income
 from .forms import EditDashboardForm, IncomeForm
 
+
 # Create your views here.
 class Dashboard(View):
     """
@@ -26,7 +27,6 @@ class Dashboard(View):
             context = {'my_list': my_list, 'form': new_form}
             return render(request, self.template_name, context)
         return render(request, self.template_name)
-
 
     def post(self, request, pk=None, *args, **kwargs):
         if pk:
@@ -75,7 +75,6 @@ class IncomeListView(View):
             context = {'my_list': my_list, 'form': form}
             return render(request, self.template_name, context)
 
-
     def post(self, request, pk=None):
         if pk:
             income = get_object_or_404(Income, pk=pk, user=request.user)
@@ -97,3 +96,11 @@ class DeleteIncomeView(View):
         income = get_object_or_404(Income, pk=pk, user=request.user)
         income.delete()
         return redirect('income')
+
+
+@method_decorator(login_required, name='dispatch')
+class ExpenseListView(View):
+    """
+    Expenses view
+    """
+    template_name = 'dashboard/expense.html'
