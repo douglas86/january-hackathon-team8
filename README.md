@@ -46,7 +46,7 @@ BalanceBuddy is a personal budgeting application that empowers users to efficien
 
 ![Website look on different devices](INSERT LINK)
 
-### A live demo to the website can be found [here](https://january-hackathon-team8-71bd1e65b2d0.herokuapp.com/finance/)
+### A live demo to the website can be found [here](https://january-hackathon-team8-71bd1e65b2d0.herokuapp.com)
 
 ## UX
 This website is not targeting any specific demographic of users. 
@@ -123,10 +123,21 @@ The scope of the project includes designing and developing the BalanceBuddy appl
 ### Skeleton
 The website is designed to be clear and simple. The site has a main login page which wen completed opens to a dashboard page. On this dashboard there are multiple tabs which the user can use to navigate the various tools availiable to them. 
 
-**Wireframe**
-The wireframe is designed using Balsamiq software.
+**Wireframes**
+The wireframes were designed using Balsamiq software. These designs were completed at the inception of our project and may not be a true representation of how the site looks today. 
 
-![wireframe](INSERT LINK)
+![wireframe1](./static/wireframes/Dashboard.png)
+![wireframe2](./static/wireframes/Add-bills.png)
+![wireframe3](./static/wireframes/add-Expense.png)
+![wireframe4](./static/wireframes/Budget.png)
+![wireframe5](./static/wireframes/upcoming-bills.png)
+![wireframe6](./static/wireframes/Report.png)
+
+### Planning 
+
+The project was designed meticulously using the agile framework, epitomizing the benefits of a dynamic team-based workflow. Our major planning and communication tool was a Kanban board, used to visualize tasks, outline their status and progress, and precisely denote who was responsible for what. The project was broken down into several manageable tasks and then plotted on the Kanban board, structured into columns specifying stages such as 'To-Do', 'In Progress', and 'Done'. The use of the Kanban board ensured real-time communication of work status to the team, providing a rich landscape of our project progress at any given time. This fostered timely reviews, quick alterations, and overall fluidity, propelling the project towards successful accomplishment.
+
+![kanban](./static/images/readme-images/bb-kanban.png)
 
 ### Surface
 
@@ -144,14 +155,7 @@ The color pallette for the site was chosen because it matched the colour associa
 
 ## Technologies used <hr>
 
-The website is designed using following technologies:
-
-### Programming languages
-
-* HTML - the project used HTML to define structure and layout of the web page;
-* CSS - the project used CSS stylesheets to specify style of the web document elements;
-* JavaScript - the project used JavaScript to implement an interactive frontend and provide logic
-* Python - the project back-end functions are written using Python.
+The website is designed using following technologies: HTML, CSS, Bootstrap, Javascript, Django, MarkDown
 
 ### Libraries
 
@@ -295,6 +299,14 @@ The following git commands were used throughout development to push code to the 
 - The deployed site will update automatically upon new commits to the master branch.
 
 ## Credits
+
+### Contributers 
+
+* <a href="https://github.com/douglas86">Douglas Maxton</a>
+* <a href="https://github.com/jamie33o">Jamie O'Neill</a>
+* <a href="https://github.com/olliesharp5">Oliver Sharp</a>
+* <a href="https://github.com/samuelandersoncodes">Samuel Anderson</a>
+* <a href="https://github.com/nikimacm">Nicola Mac Mahon</a>
 
 ### Content
 
