@@ -55,19 +55,20 @@
                                     <td>{{ expense.category }}</td>
                                     <td>{{ expense.amount }}</td>
                                     <td>{{ expense.description }}</td>
-                                </tr>
 
-                                <td>
-                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                            data-bs-target="#modal-{{ expense.id }}">Edit
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#delete-modal-{{ expense.id }}" class="btn btn-danger">
-                                        Delete
-                                    </button>
-                                </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                                data-bs-target="#modal-{{ expense.id }}">Edit
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#delete-modal-{{ expense.id }}" class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
 
                                 <div class="modal fade expense_form" id="delete-modal-{{ expense.id }}" tabindex="-1"
                                      role="dialog"
