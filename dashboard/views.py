@@ -1,5 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
+
 from .models import UpcomingBill
 from .forms import EditDashboardForm
 from django.shortcuts import get_object_or_404
@@ -36,12 +40,21 @@ class Dashboard(View):
             print(e)
 
 
-class DeleteDashboard(View):
+class DeleteDashboard(DeleteView):
     """
     This view is responsible for deleting an entry from a database
     """
+    model = UpcomingBill
     template_name = 'dashboard/index.html'
+    success_url = reverse_lazy('dashboard')
 
-    def delete(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            deleteBill = UpcomingBill.objects.filter(user=request.user)
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.delete()
+        return HttpResponseRedirect(self.success_url)
+
+    # def delete(self, request, pk, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         delete_bill = get_object_or_404(UpcomingBill, pk=pk)
+    #         delete_bill.delete()
+    #         return redirect(request, self.template_name)

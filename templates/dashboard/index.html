@@ -100,11 +100,20 @@
                                                 </h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure that you want to Delete?</p>
-                                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <form method="post" action="{% url 'delete_model' pk=bill.id %}">
+                                                    {% csrf_token %}
+                                                    {{ f.as_p }}
+                                                    <p>Are you sure that you want to Delete?</p>
+                                                    <button type="submit" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit"
+                                                            class="btn btn-danger"
+                                                    >Delete
+                                                    </button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
