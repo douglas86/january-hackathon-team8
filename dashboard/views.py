@@ -1,14 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DeleteView, ListView, DetailView
+from django.views.generic import DeleteView, ListView
 from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UpcomingBill, Income, Expense
-from .forms import EditDashboardForm, IncomeForm
+from .forms import EditDashboardForm, IncomeForm, ExpenseForm
 
 
 # Create your views here.
@@ -99,9 +99,32 @@ class DeleteIncomeView(View):
 
 
 @method_decorator(login_required, name='dispatch')
-class ExpenseListView(ListView):
+class ExpenseListView(View):
     """
     Expenses view
     """
     model = Expense
     template_name = 'dashboard/expense.html'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = ExpenseForm(request.POST)
+            expense_list = Expense.objects.filter(user=request.user)
+            forms = [ExpenseForm(instance=expense) for expense in expense_list]
+            my_list = zip(forms, expense_list)
+            context = {'my_list':my_list, 'form': form}
+            return render(request, self.template_name, context)
+
+    def post(self, request, pk=None):
+        if pk:
+            expense = get_object_or_404(Income, pk=pk, user=request.user)
+            form = ExpenseForm(request.POST, instance=expense)
+        else:
+            form = ExpenseForm(request.POST)
+
+        if form.is_valid():
+            expense = form.save(commit=False)
+            expense.user = request.user
+            expense.save()
+            return redirect('expense')
+        return render(request, self.template_name, {'form': form})
