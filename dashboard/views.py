@@ -194,3 +194,11 @@ class CategoryListView(View):
             my_list = zip(forms, category_list)
             context = {'my_list': my_list, 'form': form}
             return render(request, self.template_name, context)
+
+
+class CurConverter(View):
+    template_name = 'dashboard/currency-converter.html'
+
+    def get(self, request):
+
+        return render(request, self.template_name)

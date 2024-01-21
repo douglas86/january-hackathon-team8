@@ -11,4 +11,7 @@
     <li class="nav-item">
         <a class="nav-link text-grey" data-toggle="tab" href="#charts">Charts</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link text-grey {% if request.path == '/cur_converter/' %}active{% endif %} " href="{% url 'cur_converter' %}">Currency Converter</a>
+    </li>
 </ul>
