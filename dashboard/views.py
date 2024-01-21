@@ -122,3 +122,10 @@ class DeleteIncomeView(View):
         income = get_object_or_404(Income, pk=pk, user=request.user)
         income.delete()
         return redirect('income')
+    
+class CurConverter(View):
+    template_name = 'dashboard/currency-converter.html'
+
+    def get(self, request):
+
+        return render(request, self.template_name)
