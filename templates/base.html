@@ -15,11 +15,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Base Template</title>
 
-    {#    css styling#}
+    {# css styling#}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
 
-    {#    fontawesome link#}
+    {# favicon links#}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon.ico//apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon.ico/favicon-16x16.png' %}">
+
+    {# fontawesome link#}
     <script src="https://kit.fontawesome.com/a254ad7cf6.js" crossorigin="anonymous"></script>
 
     <!--    Bootstrap-->
@@ -36,47 +41,49 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
 
-    {#    jQuery#}
+    {# jQuery#}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
 <body>
 
-<header>
-    <nav class="navbar bg-body-tertiary">
-        <div class="logo-container">
-            <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24"
-                 class="d-inline-block align-text-top logo">
-        </div>
-        <h1 class="title">Calculated Hackers</h1>
-        <div class="icons">
-            {% if user.is_authenticated %}
+    <header>
+        <nav class="navbar bg-body-tertiary">
+            <div class="logo-container">
+                <img src="{% static 'images/logo.jpeg' %}" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top logo">
+            </div>
+            <h1 class="title">Calculated Hackers</h1>
+            <div class="icons">
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                       href="{% url 'account_logout' %}">Logout</a>
+                        href="{% url 'account_logout' %}">Logout</a>
                 </li>
-            {% else %}
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                       href="{% url 'account_signup' %}">Register</a>
+                        href="{% url 'account_signup' %}">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                       href="{% url 'account_login' %}">Login</a>
+                        href="{% url 'account_login' %}">Login</a>
                 </li>
-            {% endif %}
-            <i class="fa-solid fa-bell"></i>
-        </div>
-    </nav>
-</header>
+                {% endif %}
+                <i class="fa-solid fa-bell"></i>
+            </div>
+        </nav>
+    </header>
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
-<footer><h1>This is the footer</h1></footer>
+    <footer>
+        <h1>This is the footer</h1>
+    </footer>
 
     <script src="{% static 'js/scripts.js' %}"></script>
 
