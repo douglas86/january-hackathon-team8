@@ -76,13 +76,49 @@ Multiple developers were involved in this project. Our goal was to create a pero
 The scope of the project includes designing and developing the BalanceBuddy application. This includes implementing features for income, expense tracking and savings management. The project encompasses ensuring user-friendly interface and robust security measures. Additionally, it includes comprehensive testing to guarantee optimal functionality, and post-launch maintenance and updates.
 
 **Website Sections:**
-1. **_Section:_** Description
-2. **_Section:_** Description
-3. **_Section:_** Description
-4. **_Section:_** Description
-5. **_Section:_** Description
-6. **_Section:_** Description
-7. **_Section:_** Description
+1. **_Header:_** The header section of this website contains a navigation menu bar that appears at the top of the page. The navigation menu includes the website logo, the website name "BalanceBuddy", and a collapsible button for mobile navigation. The menu items vary depending on whether the user is authenticated or not. If the user is authenticated, the menu includes options for email settings, changing password, and logging out. If the user is not authenticated, the menu includes options for registering and logging in.
+
+![header-large](./static/images/readme-images/bb-header1.png)
+![header-small](./static/images/readme-images/bb-header2.png)
+
+2. **_Footer:_** The footer section of this website contains copyright information and links to legal information, privacy policy, and terms of service. It is placed at the bottom of the webpage and has a light background with a hint of green. The footer is divided into two columns, with the left column displaying the copyright text and the right column displaying the links in a right-aligned manner.
+
+![header](./static/images/readme-images/bb-footer.png)
+
+3. **_Landing Page:_** This section includes a text box with a brief message welcoming users to BalanceBuddy and describing it as a trusted companion for personal finance management. It encourages users to sign up or log in to start their journey towards financial freedom and balance. The text is centered in the middle of the section for easy readability. There is a stock image of financial documents set as the background image. This page is designed to provide a short description on what the site offers and lead users towards the login or registering page.  
+
+![landing_page](./static/images/readme-images/bb-landing.png)
+
+4. **_Log-in Page:_** The login page features a form with the fields required to authenticate a user. The required fields are: Username and Password. Additonally there are included links for if the user forgot their password, and returning to the dashboard. The login page is styled according to the designated color palette.   
+
+![login_page](./static/images/readme-images/bb-login.png)
+
+5. **_Register Page:_** The register page is accessed using the link in the top right of the site. This section provides users with the oppertunity to register their credientials and create an account to avccess the site's features. This page is styled in the same way as the login page. The required fields are: Username, Password and repeat password. The field for email address is optional. All optional fields are labelled clearly. If any required fields are left blank, an alert will inform the user. 
+
+![register_page](./static/images/readme-images/bb-register.png)
+
+6. **_Dashboard:_** Description
+
+![dashboard](INSERT LINK)
+
+
+7. **_Email Settings:_** This page provides the user with the opportunity to manage their email address linked to their account. Users have the option to assign a primary email, verify an email address by sending a verification email and remove an email address. The page clearly shows whether the users currently assigned email address is verified or not. The page also includes a link back to the dashboard. 
+
+![email_settings](./static/images/readme-images/bb-email-settings.png)
+
+8. **_Change Password:_** This page provides the user with the ability to change their password for their account. The user will be required input their current password, their new desired password and a repeat of the new password. If any of these fields are not completed or pass validataion, the user will be informed by an alert. There is also a link incase the user has forgotten their password. This will take them to the password reset page. 
+
+![change_password](./static/images/readme-images/bb-change-password.png)
+
+8. **_Forgotten Password:_** This page give the user the opportunity to reset their password in case they forget it. The user is required to complete their email field, this will trigger an email to be sent and the password can be reset using the link provided in that email. 
+
+![forgotten_password](./static/images/readme-images/bb-password-reset.png)
+
+9. **_Logout:_** This page informs the user they are about to log out of their account. It provides a final opportunity to return to their dashboard or confirm the sign-out action. 
+
+![logout](./static/images/readme-images/bb-signout.png)
+
+
 
 ### Skeleton
 The website is designed to be clear and simple. The site has a main login page which wen completed opens to a dashboard page. On this dashboard there are multiple tabs which the user can use to navigate the various tools availiable to them. 
