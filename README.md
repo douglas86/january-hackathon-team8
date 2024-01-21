@@ -148,7 +148,8 @@ No errors or warnings were found when passing though the JSHint validator
 
 #### Fixed Bugs
 
-*
+* Two Logout buttons were displaying on the nav bar. The resolution was to delete the duplicated list item.
+* 
 
 
 #### Unfixed Bugs
