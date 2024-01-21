@@ -7,8 +7,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import UpcomingBill, Income, Expense
-from .forms import EditDashboardForm, IncomeForm, ExpenseForm
+from .models import UpcomingBill, Income, Expense, Category
+from .forms import EditDashboardForm, IncomeForm, ExpenseForm, CategoryForm
 
 
 # Create your views here.
@@ -111,23 +111,39 @@ class ExpenseListView(View):
             form = ExpenseForm(request.POST)
             expense_list = Expense.objects.filter(user=request.user)
             forms = [ExpenseForm(instance=expense) for expense in expense_list]
+            category_form = CategoryForm(request.GET)
             my_list = zip(forms, expense_list)
-            context = {'my_list': my_list, 'form': form}
+            context = {'my_list': my_list, 'form': form, 'category_form': category_form}
             return render(request, self.template_name, context)
 
     def post(self, request, pk=None):
-        if pk:
-            expense = get_object_or_404(Expense, pk=pk, user=request.user)
-            form = ExpenseForm(request.POST, instance=expense)
-        else:
-            form = ExpenseForm(request.POST)
+        form_identifier = request.POST.get('form_identifier')
+        print(form_identifier)
+        if form_identifier == 'category_form':
+            if pk:
+                category = get_object_or_404(Category, pk=pk, user=request.user)
+                form = CategoryForm(request.POST, instance=category)
+            else:
+                form = CategoryForm(request.POST)
 
-        if form.is_valid():
-            expense = form.save(commit=False)
-            expense.user = request.user
-            expense.save()
-            return redirect('expense')
-        return render(request, self.template_name, {'form': form})
+            if form.is_valid():
+                category = form.save(commit=False)
+                category.user = request.user
+                category.save()
+                return redirect('expense')
+        else:
+            if pk:
+                expense = get_object_or_404(Expense, pk=pk, user=request.user)
+                form = ExpenseForm(request.POST, instance=expense)
+            else:
+                form = ExpenseForm(request.POST)
+
+            if form.is_valid():
+                expense = form.save(commit=False)
+                expense.user = request.user
+                expense.save()
+                return redirect('expense')
+            return render(request, self.template_name, {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -136,3 +152,18 @@ class DeleteExpenseView(View):
         expense = get_object_or_404(Expense, pk=pk, user=request.user)
         expense.delete()
         return redirect('expense')
+
+
+@method_decorator(login_required, name='dispatch')
+class CategoryListView(View):
+    model = Category
+    template_name = 'dashboard/expense.html'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = CategoryForm(request.POST)
+            category_list = Category.objects.filter(user=request.user)
+            forms = [CategoryForm(instance=category) for category in category_list]
+            my_list = zip(forms, category_list)
+            context = {'my_list': my_list, 'form': form}
+            return render(request, self.template_name, context)

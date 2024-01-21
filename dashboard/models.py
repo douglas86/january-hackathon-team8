@@ -54,6 +54,7 @@ class Expense(models.Model):
 class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name_of_category = models.CharField(max_length=50, unique=True)
+    description = models.TextField(blank=True, null=True)
     icon = models.ImageField(upload_to='images/category_icons', default='none.jpeg')
 
     class Meta:

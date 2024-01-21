@@ -1,5 +1,5 @@
 from django import forms
-from .models import UpcomingBill, Income, Expense
+from .models import UpcomingBill, Income, Expense, Category
 
 
 class EditDashboardForm(forms.ModelForm):
@@ -33,3 +33,9 @@ class ExpenseForm(forms.ModelForm):
         labels = {
             'date_received': 'Date received:'
         }
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name_of_category', 'description']
