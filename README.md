@@ -76,16 +76,17 @@ Multiple developers were involved in this project. Our goal was to create a pero
 The scope of the project includes designing and developing the BalanceBuddy application. This includes implementing features for income, expense tracking and savings management. The project encompasses ensuring user-friendly interface and robust security measures. Additionally, it includes comprehensive testing to guarantee optimal functionality, and post-launch maintenance and updates.
 
 **Website Sections:**
-1. **_Section:_** Description
-2. **_Section:_** Description
-3. **_Section:_** Description
-4. **_Section:_** Description
-5. **_Section:_** Description
+1. **_Upcoming Bills:_** In this section the user can add the title of the bill, the amount due, the date, and the staus of the bill. The status indicates if the bill is still pending or already paid.
+2. **_Monthly Expenses:_** The user can add details of monthly expenditures such as category, amount and date.
+3. **_Monthly Income:_** The user can add their monthly income to give a precise outlook of the monthly budget.
+4. **_Charts:_** These charts show the user their monthly progress throughout the year. They highlight spending trends, patterns and can give the user a clear understanding of their spending habits.
+5. **_Currency Converter:_** A currency converter which permits users to determine the conversion values of one currency to another quickly and easily based on present-day exchange rates.
 6. **_Section:_** Description
 7. **_Section:_** Description
 
 ### Skeleton
 The website is designed to be clear and simple. The site has a main login page which wen completed opens to a dashboard page. On this dashboard there are multiple tabs which the user can use to navigate the various tools availiable to them. 
+
 
 **Wireframe**
 The wireframe is designed using Balsamiq software.
@@ -93,20 +94,92 @@ The wireframe is designed using Balsamiq software.
 ![wireframe](INSERT LINK)
 
 ### Surface
-We have selected COLOR (#HEX) and COLOR (#HEX) color palette. The color pallette for the site was chosen because it matched the colour associated with currency and also provided good contrast and accessibility. The font family was chosen as it is easy to read.
+We have selected COLOR (#244c3c), COLOR (#dcdcbb) and COLOR (#fa6e06) color palette. The color pallette for the site was chosen because it matched the colour associated with currency and also provided good contrast and accessibility. The font family was chosen as it is easy to read. Images were downloaded from Unsplash [View Unsplash Site Here](https://unsplash.com/).
 
-## Technologies
+## Technologies used <hr>
 
-1. HTML - To create a basic site
-2. CSS - To create a nice, standout front-end and to give a great user experience
-4. JavaScript - To create an interactive frontend and provide logic
-3. Balsamiq - To create a wireframe
+The website is designed using following technologies:
+
+### Programming languages
+
+* HTML - the project used HTML to define structure and layout of the web page;
+* CSS - the project used CSS stylesheets to specify style of the web document elements;
+* JavaScript - the project used JavaScript to implement an interactive frontend and provide logic
+* Python - the project back-end functions are written using Python.
+
+### Libraries
+
+* [Font Awesome](https://fontawesome.com/v4.7.0/) - Font Awesome icons were used throughout the web-site.
+
+### Frameworks & Extensions
+
+* [Django](https://www.djangoproject.com/) – Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+* [Bootstrap](https://getbootstrap.com/) – Bootstrap is a web framework that focuses on simplifying the development of informative web pages.
+
+### Others
+
+* [GitHub](https://github.com/) - GitHub is a global company that provides hosting for software development version control using Git.
+* [Gitpod](https://gitpod.io/workspaces/) - One-click ready-to-code development environments for GitHub.
+* [Heroku](https://dashboard.heroku.com/) - Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps.
 
 ## Features
 
 ### Existing Features
 
+1. Content
+* Home page with introduction to app and option to login or register. 
+* Navbar/Register: Click on to open sign up page. In sign up page add username, email, password and repeat password.
+* Navbar/Login: Click on to enter username and password. Also option to go to the dashboard.
+* Footer: Footer with legal information, privacy policy and terms of service.
 
+2. Functionality
+
+* User account:
+  * Sign up / Log in / Log out (with confirmation email sent.)?
+  * Edit profile: personal information
+  * Spending history
+  * Search for a bill or expense
+  * Item filtering by categories
+
+  * Upcoming Bills:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+
+  * Monthly Expenses:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+    * Generate Charts
+
+  * Monthly Income:
+    * Add Title
+    * Add Amount
+    * Add date
+    * Add status
+    * Edit data
+    * Delete data
+    * Generate Charts
+
+  * Charts:
+    * View spending and saving history
+
+  * Currency Converter:
+    * 
+    
+
+* Admin management:
+  * CRUD functionalities for Upcoming Bills
+  * CRUD functionalities for Monthly Expenses
+  * CRUD functionalities for Monthly Income
+  * CRUD functionalities for users
+  * CRUD functionalities for orders
 
 ### Features Left to Implement
 
