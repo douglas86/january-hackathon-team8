@@ -55,11 +55,6 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="text-cream nav-link {% if request.path == logout_url %}active{% endif %}"
-                               aria-current="page"
-                               href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="text-cream nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
                                 href="{% url 'account_logout' %}">Logout</a>
                         </li>
