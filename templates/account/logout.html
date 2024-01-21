@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "account/base_entrance.html" %}
 {% load allauth i18n %}
 {% block head_title %}
 {% trans "Sign Out" %}
 {% endblock head_title %}
 
-{% block content %}
+{% block allauth_content %}
 <div class="logout-container">
     {% element h1 %}
     {% trans "Sign Out" %}
@@ -25,4 +25,4 @@
     {% endslot %}
     {% endelement %}
 </div>
-{% endblock content %}
+{% endblock  %}
