@@ -17,6 +17,7 @@ class UpcomingBill(models.Model):
     def __str__(self):
         return self.title
 
+
 class Income(models.Model):
     FREQUENCY_CHOICES = [
         ('monthly', 'Monthly'),
@@ -33,3 +34,32 @@ class Income(models.Model):
 
     def __str__(self):
         return f"{self.source} - {self.amount} ({self.frequency})"
+
+
+class Expense(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    source = models.CharField(max_length=255)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    date_received = models.DateField(format("%Y-%m-%d"), null=True)
+    description = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['date_received']
+
+    def __str__(self):
+        return f"{self.source} - {self.amount}"
+
+
+class Category(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name_of_category = models.CharField(max_length=50, unique=True)
+    description = models.TextField(blank=True, null=True)
+    icon = models.ImageField(upload_to='images/category_icons', default='none.jpeg')
+
+    class Meta:
+        ordering = ['name_of_category']
+
+    def __str__(self):
+        return self.name_of_category
