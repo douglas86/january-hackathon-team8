@@ -10,12 +10,12 @@
 
 # SUBMISSION
 
-# Calculated Hackers
+# BalanceBuddy
 
-Calculated Hackers is a personal budgeting application that empowers users to efficiently manage their finances. The app provides a comprehensive financial overview, allowing users to track income, expenses and savings. Its intuitive interface and automated functionalities simplify the budgeting process. With Calculated Hackers, gain control over your money both in the present and for the future.
+BalanceBuddy is a personal budgeting application that empowers users to efficiently manage their finances. The app provides a comprehensive financial overview, allowing users to track income, expenses and savings. Its intuitive interface and automated functionalities simplify the budgeting process. With BalanceBuddy, gain control over your money both in the present and for the future.
 
 # Table of Contents
-- [Calculated Hackers](#Calculated Hackers)
+- [BalanceBuddy](#BalanceBuddy)
 - [Table of Contents](#table-of-contents)
   - [Demo](#demo)
     - [A live demo to the website can be found here](#a-live-demo-to-the-website-can-be-found-here)
@@ -73,7 +73,7 @@ We decided upon the following points, which are applicable to the users:
 Multiple developers were involved in this project. Our goal was to create a peronal budgeting app which is accessible to a wide rande of people and provides a simple way to help users manage their finances. 
 
 ### Scope
-The scope of the project includes designing and developing the Calculated Hackers application. This includes implementing features for income, expense tracking and savings management. The project encompasses ensuring user-friendly interface and robust security measures. Additionally, it includes comprehensive testing to guarantee optimal functionality, and post-launch maintenance and updates.
+The scope of the project includes designing and developing the BalanceBuddy application. This includes implementing features for income, expense tracking and savings management. The project encompasses ensuring user-friendly interface and robust security measures. Additionally, it includes comprehensive testing to guarantee optimal functionality, and post-launch maintenance and updates.
 
 **Website Sections:**
 1. **_Section:_** Description
