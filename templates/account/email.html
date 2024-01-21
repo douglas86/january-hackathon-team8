@@ -3,7 +3,7 @@
 {% block head_title %}
     {% trans "Email Addresses" %}
 {% endblock head_title %}
-{% block content %}
+{% block allauth_content %}
     {% element h1 %}
         {% trans "Email Addresses" %}
     {% endelement %}
@@ -72,7 +72,7 @@
             {% endslot %}
         {% endelement %}
     {% endif %}
-{% endblock content %}
+{% endblock allauth_content %}
 {% block extra_body %}
     <script type="text/javascript">
 (function() {

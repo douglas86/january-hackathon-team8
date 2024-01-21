@@ -1,0 +1,39 @@
+@media (max-width: 600px) {
+    .navbar-brand {
+        display: none;
+    }
+    .footer-container {
+        margin: 2px;
+    }
+    .hero-text-box {
+        width: 80%;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .footer-container {
+        max-width: 70%;
+    }
+    .dashboard {
+        margin-top: 10px;
+    }
+    /* .login-container {
+        margin-top: 150px;
+    } */
+    .tab-container {
+        margin-top: 150px;
+    }
+    /* .logout-container {
+        margin-top: 150px;
+    } */
+    /* .signup-container {
+        margin-top: 150px;
+    } */
+}
+
+@media screen and (min-width: 1900px) {
+    .hero-text-box {
+        margin-top: 55%;
+    }
+}

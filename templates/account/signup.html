@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "account/base_entrance.html"  %}
 {% load static %}
 {% load allauth i18n %}
 {% load account socialaccount %}
@@ -6,8 +6,8 @@
 {% trans "Signup" %}
 {% endblock head_title %}
 
-{% block content %}
-<div class="container">
+{% block allauth_content %}
+<div class="signup-container">
     {% element h1 %}
     {% trans "Sign Up" %}
     {% endelement %}
@@ -34,4 +34,4 @@
     {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
 </div>
-{% endblock content %}
+{% endblock %}

@@ -2,84 +2,169 @@
 {% load static %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<h1>Upcoming Bills</h1>
+    {% if user.is_authenticated %}
+        <!-- Code to display tabs -->
+        <div class="tab-container">
+           {% include 'dashboard/includes/dashboard-nav.html' %}
 
-<div class="container mt-5 mb-5">
-    {% for bill in bills %}
-    <div class="row mb-3">
-        <div class="col-md-1">
-            <strong>#{{ forloop.counter }}</strong>
-        </div>
-        <div class="col-md-2">
-            <strong>Title:</strong> {{ bill.title | title }}
-        </div>
-        <div class="col-md-2">
-            <strong>Amount:</strong> £{{ bill.amount }}
-        </div>
-        <div class="col-md-2">
-            <strong>Date:</strong> {{ bill.due_date|date:'d-m-Y' }}
-        </div>
-        <div class="col-md-2 mb-2">
-            <strong>Status:</strong>
-            {% if bill.status == True %}
-            <i class="fa-solid fa-check"></i>
-            {% else %}
-            <i class="fa-regular fa-circle-xmark"></i>
-            {% endif %}
-        </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-secondary mb-3" data-bs-toggle="modal"
-                data-bs-target="#modal-{{ bill.id }}">Edit
-            </button>
-        </div>
-        <div class="col-md-1">
-            <button type="button" class="btn btn-danger">Delete</button>
-        </div>
-    </div>
+            <div class="tab-content">
+                <!-- Upcoming Bills Tab Content -->
+                <div id="upcomingBills" class="container tab-pane active">
+                    <section class="dashboard">
+                        <div class="tab-content">
+                            <!-- Upcoming Bills Tab Content -->
+                            <div id="upcomingBills" class="container tab-pane active">
+                                <section class="dashboard ">
+                                    <div class="w-100 d-flex justify-content-between">
+                                        <h1 class="d-inline">Upcoming Bills</h1>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#new_bill">
+                                            New <i class="fa-solid fa-plus border rounded-5 p-1 "></i>
+                                        </button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade bill_form" id="new_bill" tabindex="-1" role="dialog"
+                                         aria-labelledby="editModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fs-5" id="exampleModalLabel">Create a New
+                                                        bill</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form method="post" action="{% url 'new_bill' %}">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit"
+                                                            class="btn btn-primary">Save changes
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for f, bill in my_list %}
+                                            <tr>
+                                                <th>{{ forloop.counter }}</th>
+                                                <td>{{ bill.title | title }}</td>
+                                                <td>£ {{ bill.amount }}</td>
+                                                <td>{{ bill.due_date|date:'d-m-Y' }}</td>
+                                                <td>
+                                                    {% if bill.status == True %}
+                                                        <i class="fa-solid fa-check"></i>
+                                                    {% else %}
+                                                        <i class="fa-regular fa-circle-xmark"></i>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modal-{{ bill.id }}">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                            data-bs-target="#delete-modal-{{ bill.id }}">Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            <!-- Modal for the edit button -->
+                                            <div class="modal fade bill_form" id="modal-{{ bill.id }}" tabindex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="editModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title fs-5" id="exampleModalLabel">
+                                                                Editing: {{ bill.title|title }}</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <form method="post" action="{% url 'edit_model' bill.id %}">
+                                                            {% csrf_token %}
+                                                            {{ f.as_p }}
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit"
+                                                                    class="btn btn-primary">Save changes
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {#                modal for the delete button#}
+                                            <div class="modal fade bill_form" id="delete-modal-{{ bill.id }}"
+                                                 tabindex="-1"
+                                                 role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title fs-5" id="deleteModalLabel">
+                                                                Delete
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post"
+                                                                  action="{% url 'delete_model' pk=bill.id %}">
+                                                                {% csrf_token %}
+                                                                {{ f.as_p }}
+                                                                <p>Are you sure that you want to Delete?</p>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="submit"
+                                                                        class="btn btn-danger"
+                                                                >Delete
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-            <form method="post" action="">
-                <div class="modal-body">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="{{ bill.title }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="amount" class="form-label">Amount</label>
-                        <input type="text" class="form-control" id="amount" name="amount" value="{{ bill.amount }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="date" class="form-label">Due Date</label>
-                        <input type="date" class="form-control" id="date" name="date" value="{{ bill.due_date }}">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" href="{{ bill.id }}" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
         </div>
-    </div>
-</div>
-{% endfor %}
-</div>
-
-{% else %}
-<h1>Please log in or register</h1>
-{% endif %}
-
-<script src="{% static 'js/dashboard.js' %}"></script>
+    {% else %}
+        <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
+            <div class="hero-text-box text-center">
+                <h3>Welcome to BalanceBuddy, your trusted companion for personal finance management. Sign up or log in
+                    to start your journey towards financial freedom and balance</h3>
+            </div>
+        </section>
+    {% endif %}
 
 {% endblock content %}
