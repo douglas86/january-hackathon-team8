@@ -4,10 +4,11 @@ from django.views import View
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
-from .models import UpcomingBill
-from .forms import EditDashboardForm
 from django.shortcuts import get_object_or_404
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from .models import UpcomingBill, Income
+from .forms import EditDashboardForm, IncomeForm
 
 # Create your views here.
 class Dashboard(View):
@@ -59,3 +60,40 @@ class DeleteDashboard(DeleteView):
         self.object = self.get_object()
         self.object.delete()
         return HttpResponseRedirect(self.success_url)
+
+
+@method_decorator(login_required, name='dispatch')
+class IncomeListView(View):
+    template_name = 'dashboard/income.html'
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = IncomeForm(request.POST)
+            income_list = Income.objects.filter(user=request.user)
+            forms = [IncomeForm(instance=income) for income in income_list]
+            my_list = zip(forms, income_list)
+            context = {'my_list': my_list, 'form': form}
+            return render(request, self.template_name, context)
+
+
+    def post(self, request, pk=None):
+        if pk:
+            income = get_object_or_404(Income, pk=pk, user=request.user)
+            form = IncomeForm(request.POST, instance=income)
+        else:
+            form = IncomeForm(request.POST)
+
+        if form.is_valid():
+            income = form.save(commit=False)
+            income.user = request.user
+            income.save()
+            return redirect('income')
+        return render(request, self.template_name, {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class DeleteIncomeView(View):
+    def post(self, request, pk):
+        income = get_object_or_404(Income, pk=pk, user=request.user)
+        income.delete()
+        return redirect('income')
