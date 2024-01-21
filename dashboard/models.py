@@ -36,6 +36,7 @@ class Income(models.Model):
 
 
 class Expense(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     source = models.CharField(max_length=255)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
@@ -52,11 +53,11 @@ class Expense(models.Model):
 
 class Category(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    name_of_category = models.CharField(max_length=50, unique=True)
     icon = models.ImageField(upload_to='images/category_icons', default='none.jpeg')
 
     class Meta:
-        ordering = ['name']
+        ordering = ['name_of_category']
 
     def __str__(self):
-        return self.name
+        return self.name_of_category
