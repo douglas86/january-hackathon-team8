@@ -516,7 +516,7 @@ footer {
 
 /* bill form modal */
 
-.bill_form {
+.bill_form, .income_form {
     margin-top: 140px;
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
@@ -526,11 +526,11 @@ footer {
     font-size: 1.3em;
 }
 
-.bill_form button {
+.bill_form button, .income_form button{
     margin: 10px 10% 10px 10%;
 }
 
-.bill_form input {
+.bill_form input, .income_form input {
     background-color: #56bbed5a;
     border: none;
     color: rgb(53, 115, 77);
@@ -551,4 +551,8 @@ footer {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+}
+
+.income_form {
+    padding-bottom: 500px;
 }
