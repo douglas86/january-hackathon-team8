@@ -39,7 +39,8 @@ ALLOWED_HOSTS = [
     '8000-douglas86-januaryhackat-644pf9cg4wr.ws-eu107.gitpod.io',
     '8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io',
     'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/*',
-    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/accounts/login/'
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io/accounts/login/',
+    '8000-douglas86-januaryhackat-4calcq8i6un.ws-eu107.gitpod.io',
 ]
 
 # Application definition
@@ -49,7 +50,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io'
+    'https://8000-douglas86-januaryhackat-i441hrdlu7q.ws-eu107.gitpod.io',
+    'https://8000-douglas86-januaryhackat-4calcq8i6un.ws-eu107.gitpod.io',
 ]
 
 INSTALLED_APPS = [
