@@ -1,5 +1,5 @@
 from django import forms
-from .models import UpcomingBill, Income, Expense, Category
+from .models import UpcomingBill, Income
 
 
 class EditDashboardForm(forms.ModelForm):
@@ -23,19 +23,49 @@ class IncomeForm(forms.ModelForm):
             'date_received': 'Date received:',
         }
 
+class IncomeFilterForm(forms.Form):
+    source = forms.MultipleChoiceField(
+        choices=[(source, source) for source in Income.objects.values_list('source', flat=True).distinct()],
+        widget=forms.CheckboxSelectMultiple(),
+        required=False,
+    )
 
-class ExpenseForm(forms.ModelForm):
-    class Meta:
-        model = Expense
-        fields = ['source', 'category', 'amount', 'date_received', 'description']
-        widgets = {'date_received': forms.DateInput(attrs={'type': 'date'})}
+    frequency = forms.ChoiceField(
+        choices=[(None, 'None')] + list(Income.FREQUENCY_CHOICES),
+        required=False,
+    )
 
-        labels = {
-            'date_received': 'Date received:'
-        }
+    date_from = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
+
+    date_to = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
 
 
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ['name_of_category', 'description']
+
+class IncomeFilterForm(forms.Form):
+    source = forms.MultipleChoiceField(
+        choices=[(source, source) for source in Income.objects.values_list('source', flat=True).distinct()],
+        widget=forms.CheckboxSelectMultiple(),
+        required=False,
+    )
+
+    frequency = forms.ChoiceField(
+        choices=[(None, 'None')] + list(Income.FREQUENCY_CHOICES),
+        required=False,
+    )
+
+    date_from = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
+
+    date_to = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=False,
+    )
+

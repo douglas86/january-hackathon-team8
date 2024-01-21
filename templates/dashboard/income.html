@@ -4,13 +4,18 @@
 {% block content %}
     {% if user.is_authenticated %}
     <!-- Code to display tabs -->
-    <div class="tab-container">
+    <div class="tab-container ">
         {% include 'dashboard/includes/dashboard-nav.html' %}
 
 
-        <div class="tab-content">
+        <div class="tab-content pt-5">
             <!-- Upcoming Bills Tab Content -->
+            
+
+    <div class="row mt-5">
+        <div class="col-12 col-xl-9">
             <div id="upcomingBills" class="container tab-pane active">
+               
                 <section class="dashboard ">
                 <div class="w-100 d-flex justify-content-between">
                     <h1 class="d-inline">Income</h1>
@@ -42,7 +47,8 @@
            </div>
 
 
-        <table class="table">
+        <div class="table-responsive">
+            <table class="table table-bordered">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -121,10 +127,35 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
                 </section>
             </div>
         </div>
+
+            <div class="col-12 col-xl-2 border bg-light p-5 mr-3">
+
+            <div class="filter-form ">
+                <h2 class="title w-100 border-bottom">Filter</h2>
+                <form method="get"  action="{% url 'income' %}">
+                    {% csrf_token %}
+                    {{ filter_form.as_p }}
+                    <a href="{% url 'income' %}" class="btn btn-secondary">Reset
+                    </a>
+                    <button type="submit"
+                            class="btn btn-primary">filter
+                    </button>
+                </form>
+
+                <h3 class="title border-bottom">Results:</h3>
+                <h5 class="text-center mt-3 border p-3">Total amount: € {{total_amount}}</h5>
+            </div>
+        </div>
     </div>
+</div>
+</div>
+
+
     {% else %}
         <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
             <div class="hero-text-box text-center">
