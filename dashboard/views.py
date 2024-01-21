@@ -1,4 +1,3 @@
-from django import forms
 from django.shortcuts import render, redirect
 from django.views import View
 from .models import UpcomingBill
@@ -22,7 +21,6 @@ class Dashboard(View):
             return render(request, self.template_name, context)
         return render(request, self.template_name)
 
-
     def post(self, request, pk, *args, **kwargs):
         bill = get_object_or_404(UpcomingBill, pk=pk)
         form = EditDashboardForm(request.POST, instance=bill)
@@ -36,3 +34,14 @@ class Dashboard(View):
                 return render(request, self.template_name)
         except Exception as e:
             print(e)
+
+
+class DeleteDashboard(View):
+    """
+    This view is responsible for deleting an entry from a database
+    """
+    template_name = 'dashboard/index.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            deleteBill = UpcomingBill.objects.filter(user=request.user)
