@@ -7,6 +7,18 @@ body {
     flex-direction: column;
 }
 
+.filter-form  {
+    padding: 0 10px;
+}
+
+.errorlist li {
+    display: none;
+}
+
+.filter-form input[type='date'] {
+    display: block;
+}
+
 /* allauth templates */
 #icon {
     border-radius: 50%;

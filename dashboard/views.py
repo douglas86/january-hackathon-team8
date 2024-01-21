@@ -1,17 +1,19 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DeleteView, ListView
+from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UpcomingBill, Income, Expense, Category
-from .forms import EditDashboardForm, IncomeForm, ExpenseForm, CategoryForm
-
-from .models import UpcomingBill, Income
-from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
+from .forms import (EditDashboardForm,
+                    IncomeForm,
+                    ExpenseForm,
+                    ExspenseFilterForm,
+                    IncomeFilterForm
+                    )
 
 # Create your views here.
 class Dashboard(View):
@@ -130,47 +132,63 @@ class ExpenseListView(View):
     """
     Expenses view
     """
-    model = Expense
     template_name = 'dashboard/expense.html'
 
     def get(self, request):
+        filter_form = ExspenseFilterForm(request.GET)
+        expense_list = Expense.objects.filter(user=request.user)
+
+        if filter_form.is_valid():
+            source = filter_form.cleaned_data['source']
+            if source:
+               expense_list = expense_list.filter(source__in=source)
+           
+            categories = filter_form.cleaned_data['categories']
+            if categories:
+               expense_list = expense_list.filter(category__in=categories)
+
+            date_to = filter_form.cleaned_data['date_to']
+            date_from = filter_form.cleaned_data['date_from']
+            if date_from and date_to:
+                expense_list = expense_list.filter(date_received__range=[date_from, date_to])
+            elif date_from:
+                expense_list = expense_list.filter(date_received__gte=date_from)
+            elif date_to:
+                expense_list = expense_list.filter(date_received__lte=date_to)
+
+            total_amount = sum(expense.amount for expense in expense_list)
+
         if request.user.is_authenticated:
             form = ExpenseForm(request.POST)
-            expense_list = Expense.objects.filter(user=request.user)
             forms = [ExpenseForm(instance=expense) for expense in expense_list]
-            category_form = CategoryForm(request.GET)
+    
             my_list = zip(forms, expense_list)
-            context = {'my_list': my_list, 'form': form, 'category_form': category_form}
+            context = {'my_list': my_list, 'form': form, 'expense_filter_form': filter_form, 'total_amount': total_amount}
             return render(request, self.template_name, context)
 
     def post(self, request, pk=None):
-        form_identifier = request.POST.get('form_identifier')
-        print(form_identifier)
-        if form_identifier == 'category_form':
-            if pk:
-                category = get_object_or_404(Category, pk=pk, user=request.user)
-                form = CategoryForm(request.POST, instance=category)
-            else:
-                form = CategoryForm(request.POST)
-
-            if form.is_valid():
-                category = form.save(commit=False)
-                category.user = request.user
-                category.save()
-                return redirect('expense')
+        
+        if pk:
+            expense = get_object_or_404(Expense, pk=pk, user=request.user)
+            form = ExpenseForm(request.POST, instance=expense)
         else:
-            if pk:
-                expense = get_object_or_404(Expense, pk=pk, user=request.user)
-                form = ExpenseForm(request.POST, instance=expense)
-            else:
-                form = ExpenseForm(request.POST)
+            form = ExpenseForm(request.POST)
 
-            if form.is_valid():
-                expense = form.save(commit=False)
-                expense.user = request.user
-                expense.save()
-                return redirect('expense')
-            return render(request, self.template_name, {'form': form})
+        if form.is_valid():
+            existing_category = form.cleaned_data['category']
+            new_category = form.cleaned_data['new_category']
+            expense = form.save(commit=False)
+
+            if not existing_category and new_category:
+                # Create a new category if the user entered one
+                category, created = Category.objects.get_or_create(name=new_category)
+                expense.category = category
+            elif existing_category:
+                expense.category = existing_category
+            expense.user = request.user
+            expense.save()
+            return redirect('expense')
+        return render(request, self.template_name, {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -179,21 +197,6 @@ class DeleteExpenseView(View):
         expense = get_object_or_404(Expense, pk=pk, user=request.user)
         expense.delete()
         return redirect('expense')
-
-
-@method_decorator(login_required, name='dispatch')
-class CategoryListView(View):
-    model = Category
-    template_name = 'dashboard/expense.html'
-
-    def get(self, request):
-        if request.user.is_authenticated:
-            form = CategoryForm(request.POST)
-            category_list = Category.objects.filter(user=request.user)
-            forms = [CategoryForm(instance=category) for category in category_list]
-            my_list = zip(forms, category_list)
-            context = {'my_list': my_list, 'form': form}
-            return render(request, self.template_name, context)
 
 
 class CurConverter(View):
