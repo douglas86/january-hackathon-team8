@@ -159,6 +159,9 @@ The color pallette for the site was chosen because it matched the colour associa
 
 In the future we would like to add,
 
+* A feature where the user could take a photo of a receipt and the information would autofil the required fields. 
+* An account page the user could customise with a profile picture.
+* A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
 * 
 
 ## Testing
