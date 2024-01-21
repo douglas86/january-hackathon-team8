@@ -556,3 +556,71 @@ footer {
 .income_form {
     padding-bottom: 500px;
 }
+
+
+/* converter page */
+ 
+.heading {
+    font-family: 'Pacifico', cursive;
+    margin: 35px auto 20px;
+}
+ 
+hr {
+    border-top: 2px solid black;
+    width: 80%;
+    margin: 0 auto 55px auto;
+}
+ 
+ 
+label {
+    font-size: 20px;
+}
+
+.converter input {
+    width: 100%;
+    margin: 10px 0;
+}
+ 
+.main {
+    width: 90%;
+    padding: 0;
+    margin: 0;
+}
+#finalAmount {
+    font-family: 'Lobster', cursive;
+    display: none;
+    margin: 50px auto;
+}
+ 
+#finalAmount h2 {
+    font-size: 50px;
+}
+ 
+.finalValue {
+    font-family: 'Amiri', serif;
+}
+ 
+@media (max-width: 768px) {
+    hr {
+        width: 60%;
+    }
+ 
+    .main {
+        width: 100%;
+    }
+}
+ 
+@media (max-width: 400px) {
+    .heading {
+        font-size: 60px;
+    }
+ 
+    hr {
+        width: 75%;
+    }
+ 
+    #finalAmount h2,
+    .finalValue {
+        font-size: 40px;
+    }
+}
