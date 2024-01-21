@@ -57,9 +57,8 @@ The site is focused on simplicity and ease of navigation so users can interact w
 We decided upon the following points, which are applicable to the users:
 
 - As a user, I want to see a clear logo and the name of the application so that I know I'm using the right app.
-- As a user, I want to easily access notifications and help through icons on the dashboard so I can stay informed and get assistance when needed.
-- As a user, I want to see my profile picture and name prominently displayed, along with a logout button for my security.
-- As a user, I desire to access the settings icon to adjust my app settings or personal preferences.
+- As a user, I want to see a logout button for my security.
+- As a user, I desire to access the settings to adjust my app settings or personal preferences.
 - As a user, I want to see an overview of my upcoming bills, savings, spending, and income on the dashboard so I can easily track my financial health.
 - As a user, I want to be able to navigate to a budget tab to view and manage my monthly budget.
 - As a user, I want to view my budget history and make comparisons to previous months.
@@ -79,6 +78,7 @@ The scope of the project includes designing and developing the BalanceBuddy appl
 1. **_Header:_** The header section of this website contains a navigation menu bar that appears at the top of the page. The navigation menu includes the website logo, the website name "BalanceBuddy", and a collapsible button for mobile navigation. The menu items vary depending on whether the user is authenticated or not. If the user is authenticated, the menu includes options for email settings, changing password, and logging out. If the user is not authenticated, the menu includes options for registering and logging in.
 
 ![header-large](./static/images/readme-images/bb-header1.png)
+
 ![header-small](./static/images/readme-images/bb-header2.png)
 
 2. **_Footer:_** The footer section of this website contains copyright information and links to legal information, privacy policy, and terms of service. It is placed at the bottom of the webpage and has a light background with a hint of green. The footer is divided into two columns, with the left column displaying the copyright text and the right column displaying the links in a right-aligned manner.
@@ -129,7 +129,18 @@ The wireframe is designed using Balsamiq software.
 ![wireframe](INSERT LINK)
 
 ### Surface
-We have selected COLOR (#HEX) and COLOR (#HEX) color palette. The color pallette for the site was chosen because it matched the colour associated with currency and also provided good contrast and accessibility. The font family was chosen as it is easy to read.
+
+The color pallette for the site was chosen because it matched the colour associated with currency and also provided good contrast and accessibility. The font family was chosen as it is easy to read.
+
+| Hex | RGB |
+| -------------- | ----------------- |
+| #244c3c | (36,76,60) |
+| #526c5b | (82,108,91) |
+| #dcdcbb | (220,220,187) |
+| #425e6a | (66,94,106) |
+| #fa6e06 | (250,110,6) |
+
+![color-pallette](./static/images/readme-images/bb-color-pallette.png)
 
 ## Technologies
 
@@ -217,4 +228,4 @@ The following git commands were used throughout development to push code to the 
 
 ### Media
 
-*
+* <a href="https://www.freepik.com/free-photo/touch-computer-wood-empty-supply-copy-space_1203329.htm#page=2&query=finance%20background&position=18&from_view=keyword&track=ais&uuid=9fc4675f-d8b9-4d83-82b1-1df482c4bde9">Image by mindandi</a> on Freepik
