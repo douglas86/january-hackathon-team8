@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="tab-container">
+            {% include 'dashboard/includes/dashboard-nav.html' %}
+            <h1>charts</h1>
+        </div>
+    {% endif %}
+
+{% endblock %}

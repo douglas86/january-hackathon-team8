@@ -9,7 +9,7 @@
         <a class="nav-link {% if request.path == '/income/' %}active{% endif %} text-grey" href="{% url 'income' %}" data-toggle="tab">Income</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-grey" data-toggle="tab" href="#charts">Charts</a>
+        <a class="nav-link text-grey {% if request.path == '/charts/' %}active{% endif %}" data-toggle="tab" href="{% url 'charts' %}">Charts</a>
     </li>
     <li class="nav-item">
         <a class="nav-link text-grey {% if request.path == '/cur_converter/' %}active{% endif %} " href="{% url 'cur_converter' %}">Currency Converter</a>

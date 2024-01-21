@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DeleteView, ListView
+from django.views.generic import DeleteView, TemplateView
 from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
@@ -12,6 +12,7 @@ from .forms import EditDashboardForm, IncomeForm, ExpenseForm, CategoryForm
 
 from .models import UpcomingBill, Income
 from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
+
 
 # Create your views here.
 class Dashboard(View):
@@ -68,7 +69,7 @@ class DeleteDashboard(DeleteView):
 class IncomeListView(View):
     template_name = 'dashboard/income.html'
 
-    def get(self, request ):
+    def get(self, request):
 
         filter_form = IncomeFilterForm(request.GET)
         income_list = Income.objects.filter(user=request.user)
@@ -76,8 +77,8 @@ class IncomeListView(View):
         if filter_form.is_valid():
             source = filter_form.cleaned_data['source']
             if source:
-               print(source)
-               income_list = income_list.filter(source__in=source)
+                print(source)
+                income_list = income_list.filter(source__in=source)
 
             frequency = filter_form.cleaned_data['frequency']
             if frequency:
@@ -93,7 +94,6 @@ class IncomeListView(View):
                 income_list = income_list.filter(date_received__lte=date_to)
 
             total_amount = sum(income.amount for income in income_list)
-
 
         form = IncomeForm(request.GET)
         forms = [IncomeForm(instance=income) for income in income_list]
@@ -200,5 +200,23 @@ class CurConverter(View):
     template_name = 'dashboard/currency-converter.html'
 
     def get(self, request):
-
         return render(request, self.template_name)
+
+
+class ChartListView(TemplateView):
+    template_name = 'dashboard/chart.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['data'] = [
+            {
+                'id': obj.id,
+                'value': obj.date.isoformat(),
+                'date': obj.date.strftime('')
+            }
+            for obj in Expense.objects.all()
+        ]
+
+        return context
+
