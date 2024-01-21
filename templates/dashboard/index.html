@@ -3,129 +3,183 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-    <!-- Code to display tabs -->
-    <div class="tab-container">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active text-grey" data-toggle="tab" href="#upcomingBills">Upcoming Bills</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-grey" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-grey" data-toggle="tab" href="#monthlyIncome">Monthly Income</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-grey" data-toggle="tab" href="#charts">Charts</a>
-            </li>
-        </ul>
+        <!-- Code to display tabs -->
+        <div class="tab-container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active text-grey" data-toggle="tab" href="#upcomingBills">Upcoming Bills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-grey" data-toggle="tab" href="#monthlyExpenses">Monthly Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-grey" data-toggle="tab" href="#monthlyIncome">Monthly Income</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-grey" data-toggle="tab" href="#charts">Charts</a>
+                </li>
+            </ul>
 
-        <div class="tab-content">
-            <!-- Upcoming Bills Tab Content -->
-            <div id="upcomingBills" class="container tab-pane active">
-                <section class="dashboard ">
-                <div class="w-100 d-flex justify-content-between">
-                    <h1 class="d-inline">Upcoming Bills</h1>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new_bill">
-                        New   <i class="fa-solid fa-plus border rounded-5 p-1 "></i>
-                    </button>
-                </div>
+            <div class="tab-content">
+                <!-- Upcoming Bills Tab Content -->
+                <div id="upcomingBills" class="container tab-pane active">
+                    <section class="dashboard">
+                        <div class="tab-content">
+                            <!-- Upcoming Bills Tab Content -->
+                            <div id="upcomingBills" class="container tab-pane active">
+                                <section class="dashboard ">
+                                    <div class="w-100 d-flex justify-content-between">
+                                        <h1 class="d-inline">Upcoming Bills</h1>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#new_bill">
+                                            New <i class="fa-solid fa-plus border rounded-5 p-1 "></i>
+                                        </button>
+                                    </div>
                                     <!-- Modal -->
-                <div class="modal fade bill_form" id="new_bill" tabindex="-1" role="dialog"
-                aria-labelledby="editModalLabel"
-                aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                   <div class="modal-content">
-                       <div class="modal-header">
-                           <h5 class="modal-title fs-5" id="exampleModalLabel">Create New bill</h5>
-                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                       </div>
-                       <form method="post"  action="{% url 'new_bill' %}">
-                           {% csrf_token %}
-                           {{ form.as_p }}
-                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                           </button>
-                           <button type="submit"
-                                   class="btn btn-primary">Save changes
-                           </button>
-                       </form>
-                   </div>
-               </div>
-           </div>
+                                    <div class="modal fade bill_form" id="new_bill" tabindex="-1" role="dialog"
+                                         aria-labelledby="editModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fs-5" id="exampleModalLabel">Create a New
+                                                        bill</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <form method="post" action="{% url 'new_bill' %}">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit"
+                                                            class="btn btn-primary">Save changes
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for f, bill in my_list %}
-                <tr>
-                    <th>{{ forloop.counter }}</th>
-                    <td>{{ bill.title | title }}</td>
-                    <td>£ {{ bill.amount }}</td>
-                    <td>{{ bill.due_date|date:'d-m-Y' }}</td>
-                    <td>
-                        {% if bill.status == True %}
-                            <i class="fa-solid fa-check"></i>
-                        {% else %}
-                            <i class="fa-regular fa-circle-xmark"></i>
-                        {% endif %}
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal-{{ bill.id }}">
-                            Edit
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for f, bill in my_list %}
+                                            <tr>
+                                                <th>{{ forloop.counter }}</th>
+                                                <td>{{ bill.title | title }}</td>
+                                                <td>£ {{ bill.amount }}</td>
+                                                <td>{{ bill.due_date|date:'d-m-Y' }}</td>
+                                                <td>
+                                                    {% if bill.status == True %}
+                                                        <i class="fa-solid fa-check"></i>
+                                                    {% else %}
+                                                        <i class="fa-regular fa-circle-xmark"></i>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modal-{{ bill.id }}">
+                                                        Edit
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                            data-bs-target="#delete-modal-{{ bill.id }}">Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
 
-                <!-- Modal -->
-                <div class="modal fade bill_form" id="modal-{{ bill.id }}" tabindex="-1" role="dialog"
-                     aria-labelledby="editModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <!-- Modal for the edit button -->
+                                            <div class="modal fade bill_form" id="modal-{{ bill.id }}" tabindex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="editModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title fs-5" id="exampleModalLabel">
+                                                                Editing: {{ bill.title|title }}</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <form method="post" action="{% url 'edit_model' bill.id %}">
+                                                            {% csrf_token %}
+                                                            {{ f.as_p }}
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Close
+                                                            </button>
+                                                            <button type="submit"
+                                                                    class="btn btn-primary">Save changes
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {#                modal for the delete button#}
+                                            <div class="modal fade bill_form" id="delete-modal-{{ bill.id }}"
+                                                 tabindex="-1"
+                                                 role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title fs-5" id="deleteModalLabel">
+                                                                Delete
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post"
+                                                                  action="{% url 'delete_model' pk=bill.id %}">
+                                                                {% csrf_token %}
+                                                                {{ f.as_p }}
+                                                                <p>Are you sure that you want to Delete?</p>
+                                                                <button type="submit" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                                <button type="submit"
+                                                                        class="btn btn-danger"
+                                                                >Delete
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
                             </div>
-                            <form method="post"  action="{% url 'edit_model' bill.id %}">
-                                {% csrf_token %}
-                                {{ f.as_p }}
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                </button>
-                                <button type="submit"
-                                        class="btn btn-primary">Save changes
-                                </button>
-                            </form>
+                            <div id="monthlyExpenses" class="container tab-pane fade">
+                                <!-- Code for the "Monthly Expenses" tab goes here -->
+                            </div>
+                            <div id="monthlyIncome" class="container tab-pane fade">
+                                <!-- Code for the "Monthly Income" tab goes here -->
+                            </div>
+                            <div id="charts" class="container tab-pane fade">
+                                <!-- Code for the "Charts" tab goes here -->
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
-            {% endfor %}
-            </tbody>
-        </table>
-                </section>
-            </div>
-            <div id="monthlyExpenses" class="container tab-pane fade">
-                <!-- Code for the "Monthly Expenses" tab goes here -->
-            </div>
-            <div id="monthlyIncome" class="container tab-pane fade">
-                <!-- Code for the "Monthly Income" tab goes here -->
-            </div>
-            <div id="charts" class="container tab-pane fade">
-                <!-- Code for the "Charts" tab goes here -->
             </div>
         </div>
-    </div>
     {% else %}
         <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
             <div class="hero-text-box text-center">
