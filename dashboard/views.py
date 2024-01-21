@@ -14,11 +14,14 @@ class Dashboard(View):
     template_name = 'dashboard/index.html'
 
     def get(self, request, *args, **kwargs):
-        bills = UpcomingBill.objects.filter(user=request.user)
-        form = [EditDashboardForm(instance=bill) for bill in bills]
-        my_list = zip(form, bills)
-        context = {'my_list': my_list}
-        return render(request, self.template_name, context)
+        if request.user.is_authenticated:
+            bills = UpcomingBill.objects.filter(user=request.user)
+            form = [EditDashboardForm(instance=bill) for bill in bills]
+            my_list = zip(form, bills)
+            context = {'my_list': my_list}
+            return render(request, self.template_name, context)
+        return render(request, self.template_name)
+
 
     def post(self, request, pk, *args, **kwargs):
         bill = get_object_or_404(UpcomingBill, pk=pk)

@@ -61,7 +61,7 @@
                 </tr>
 
                 <!-- Modal -->
-                <div class="modal fade" id="modal-{{ bill.id }}" tabindex="-1" role="dialog"
+                <div class="modal fade bill_form" id="modal-{{ bill.id }}" tabindex="-1" role="dialog"
                      aria-labelledby="editModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -70,7 +70,7 @@
                                 <h5 class="modal-title fs-5" id="exampleModalLabel">Editing: {{ bill.title|title }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form method="post" id="bill_form" action="{% url 'edit_model' bill.id %}">
+                            <form method="post"  action="{% url 'edit_model' bill.id %}">
                                 {% csrf_token %}
                                 {{ f.as_p }}
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
