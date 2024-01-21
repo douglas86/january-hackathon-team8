@@ -23,8 +23,36 @@
         <div class="tab-content">
             <!-- Upcoming Bills Tab Content -->
             <div id="upcomingBills" class="container tab-pane active">
-                <section class="dashboard">
-                    <h1>Upcoming Bills</h1>
+                <section class="dashboard ">
+                <div class="w-100 d-flex justify-content-between">
+                    <h1 class="d-inline">Upcoming Bills</h1>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new_bill">
+                        New   <i class="fa-solid fa-plus border rounded-5 p-1 "></i>
+                    </button>
+                </div>
+                                    <!-- Modal -->
+                <div class="modal fade bill_form" id="new_bill" tabindex="-1" role="dialog"
+                aria-labelledby="editModalLabel"
+                aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <h5 class="modal-title fs-5" id="exampleModalLabel">Create New bill</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                       </div>
+                       <form method="post"  action="{% url 'new_bill' %}">
+                           {% csrf_token %}
+                           {{ form.as_p }}
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                           </button>
+                           <button type="submit"
+                                   class="btn btn-primary">Save changes
+                           </button>
+                       </form>
+                   </div>
+               </div>
+           </div>
+
 
         <table class="table">
             <thead>
