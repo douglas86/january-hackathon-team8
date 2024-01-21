@@ -8,7 +8,7 @@
 
         <div class="tab-content mt-5">
            
-            <div class="container bg-light border p-5">
+            <div class="container bg-light border p-5 mb-5">
                  <!-- Currency Converter -->
             <h1 class="heading text-center display-2">
                 Currency Converter
@@ -167,14 +167,18 @@
 
                     <!-- Display the converted amount -->
                     <h2>Converted Amount :
-                        <span class="finalValue" style="color:green;">
+                        <span class="finalValue " style="color:green;">
+                        </span>
+                        <span class="h1 d-block mt-5" style="color:green;">
+                            Conversion Rate:
+                        </span>
+                        <span class="from-rate  h4" style="color:green;">
+                        </span>
+                        <span class="to-rate  h4 " style="color:green;">
                         </span>
                     </h2>
                 </div>
             </div>
-
-            <!-- linking script.js file -->
-            <script src="script.js"></script>
 
         </div>
     </div>
@@ -199,6 +203,9 @@ let fromCurrecy = document.querySelector(".from");
 let toCurrecy = document.querySelector(".to");
 let finalValue = document.querySelector(".finalValue");
 let finalAmount = document.getElementById("finalAmount");
+let fromRateSpan = document.querySelector(".from-rate");
+let toRateSpan = document.querySelector(".to-rate");
+
 let resultFrom;
 let resultTo;
 let searchValue;
@@ -235,6 +242,8 @@ function getResults() {
 function displayResults(currency) {
     let fromRate = currency.rates[resultFrom];
     let toRate = currency.rates[resultTo];
+    fromRateSpan.innerHTML = resultFrom + ': ' + fromRate
+    toRateSpan.innerHTML = resultTo + ': ' + toRate
     finalValue.innerHTML =
         ((toRate / fromRate) * searchValue).toFixed(2);
     finalAmount.style.display = "block";
