@@ -11,12 +11,36 @@
                 <div class="container tab-pane active" id="upcomingBills">
                     <section class="dashboard">
                         <div class="w-100 d-flex justify-content-between">
-                            <h1 class="d-inline">Expense</h1>
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new_expense">New <i
-                                    class="fa-solid fa-plus border rounded-5 p-1 "></i></button>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new_expense">New
+                                Expense <i
+                                        class="fa-solid fa-plus border rounded-5 p-1 "></i></button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_caategory">New
+                                Category <i
+                                        class="fa-solid fa-plus border rounded-5 p-1 "></i></button>
                         </div>
 
-                        {#                    Modal#}
+                        {# New Expense Modal#}
+                        <div class="modal fade income_form" id="new_expense" tabindex="-1" role="dialog"
+                             aria-labelledby="editModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fs-5" id="exampleModalLabel">{{ user }}'s Expense</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <form method="post" action="{% url 'expense' %}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# New Category Modal#}
                         <div class="modal fade income_form" id="new_expense" tabindex="-1" role="dialog"
                              aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
