@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UpcomingBill, Category
+from .models import UpcomingBill, Category, Expense
 
 
 # Register your models here.
@@ -11,3 +11,8 @@ class UpcomingBillAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'name_of_category', 'icon')
+
+
+@admin.register(Expense)
+class ExpensesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'source', 'category', 'amount', 'date_received', 'description')
