@@ -9,5 +9,6 @@ urlpatterns = [
     path('income/', views.IncomeListView.as_view(), name='income'),
     path('edit_income/<int:pk>', views.IncomeListView.as_view(), name='edit_income'),
     path('delete_income/<int:pk>', views.DeleteIncomeView.as_view(), name='delete_income'),
+    path('filter_income/', views.IncomeListView.as_view(), name='filter_income'),
 
 ]

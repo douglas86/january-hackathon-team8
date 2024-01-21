@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UpcomingBill, Income
-from .forms import EditDashboardForm, IncomeForm
+from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
 
 # Create your views here.
 class Dashboard(View):
@@ -66,14 +66,39 @@ class DeleteDashboard(DeleteView):
 class IncomeListView(View):
     template_name = 'dashboard/income.html'
 
-    def get(self, request):
-        if request.user.is_authenticated:
-            form = IncomeForm(request.POST)
-            income_list = Income.objects.filter(user=request.user)
-            forms = [IncomeForm(instance=income) for income in income_list]
-            my_list = zip(forms, income_list)
-            context = {'my_list': my_list, 'form': form}
-            return render(request, self.template_name, context)
+    def get(self, request ):
+        
+        filter_form = IncomeFilterForm(request.GET)
+        income_list = Income.objects.filter(user=request.user)
+
+        if filter_form.is_valid():
+            source = filter_form.cleaned_data['source']
+            if source:
+               print(source)
+               income_list = income_list.filter(source__in=source)
+
+            frequency = filter_form.cleaned_data['frequency']
+            if frequency:
+                income_list = income_list.filter(frequency=frequency)
+
+            date_to = filter_form.cleaned_data['date_to']
+            date_from = filter_form.cleaned_data['date_from']
+            if date_from and date_to:
+                income_list = income_list.filter(date_received__range=[date_from, date_to])
+            elif date_from:
+                income_list = income_list.filter(date_received__gte=date_from)
+            elif date_to:
+                income_list = income_list.filter(date_received__lte=date_to)
+
+            total_amount = sum(income.amount for income in income_list)
+
+
+        form = IncomeForm(request.GET)
+        forms = [IncomeForm(instance=income) for income in income_list]
+
+        my_list = zip(forms, income_list)
+        context = {'my_list': my_list, 'form': form, 'filter_form': filter_form, 'total_amount': total_amount}
+        return render(request, self.template_name, context)
 
 
     def post(self, request, pk=None):
