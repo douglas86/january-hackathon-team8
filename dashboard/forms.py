@@ -72,7 +72,6 @@ class IncomeFilterForm(forms.Form):
     )
 
 
-
 class ExpenseForm(forms.ModelForm):
     new_category = forms.CharField(max_length=50, required=False, label='New Category')
     category = forms.ModelChoiceField(

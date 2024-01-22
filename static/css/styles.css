@@ -418,28 +418,6 @@ p {
     color: #555;
 }
 
-/* Style form fields
-form input[type="text"],
-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-} */
-
-/* Style submit button
-form button {
-    background-color: #244c3c;
-    color: #dcdcbb;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    color: #fa6e06;
-} */
 
 /* Style social account login section */
 .social-login {
@@ -462,25 +440,16 @@ form {
     margin-top: 10px;
 }
 
-/* .login-container {
-    margin-top: 80px;
-    padding-left: 5px;
-} */
+link[rel="icon"] {
+    background-color: red;
+}
+
 
 .tab-container {
     margin-top: 80px;
-    padding-left: 5px;
+    margin-bottom: 100px;
 }
 
-/* .logout-container {
-    margin-top: 80px;
-    padding-left: 5px;
-} */
-
-/* .signup-container {
-    margin-top: 80px;
-    padding-left: 5px;
-} */
 
 /* Footer Styles */
 footer {
