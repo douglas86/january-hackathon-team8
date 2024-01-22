@@ -97,9 +97,21 @@ The scope of the project includes designing and developing the BalanceBuddy appl
 
 ![register_page](./static/images/readme-images/bb-register.png)
 
-6. **_Dashboard:_** Description
+6. **_Dashboard:_** The dashboard area contains 5 clickable tabs: 
+* Upcoming Bills - where users can input any upcoming bills they will have to pay. Here they can input the title, amount, date and status. There are also buttons to edit and delete the field. 
+![bills](./static/images/readme-images/bb-bills.png)
 
-![dashboard](INSERT LINK)
+* Expenses - This section is where users can record their expenses. The user records the source, category, amount and description using the add new expense button. There are also buttons to edit and delete the field. 
+![expenses](./static/images/readme-images/bb-expenses.png)
+
+* Income - This section is where users can record their income. The user records the source, amount, date received, frequency and description using the add new income button. There are also buttons to edit and delete the field. 
+![income](./static/images/readme-images/bb-income.png)
+
+* Charts - this is where all the data is visualised into a pie chart for the user to clearly see how their finances currently look.
+![charts](./static/images/readme-images/bb-chart.png)
+
+* Currency Converter - this is an additional utility where users can convert multiple currencies. 
+![converter](./static/images/readme-images/bb-converter.png)
 
 
 7. **_Email Settings:_** This page provides the user with the opportunity to manage their email address linked to their account. Users have the option to assign a primary email, verify an email address by sending a verification email and remove an email address. The page clearly shows whether the users currently assigned email address is verified or not. The page also includes a link back to the dashboard. 
@@ -238,6 +250,7 @@ In the future we would like to add,
 * An account page the user could customise with a profile picture.
 * A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
 * An addition to the profile page where the user can select the currency they wish to view their finances in
+* Add more personalised style to the dashboard tab sections 
 
 ## Testing
 
@@ -251,35 +264,18 @@ In the future we would like to add,
 
 ### Validator Testing
 
-#### HTML
-No errors or warnings were found when passing through the official W3C validator.
-
-![html_validator](INSERT LINK)
-
-#### CSS
-No errors or warnings were found when passing through the official (Jigsaw) validator.
-
-![css_validator](INSERT LINK)
-
 #### WebAim Contrast checker 
 No errors or warnings were found when passing through the contrast validator.
 
 ![contrast_validator](./static/images/readme-images/bb-contrast-val.png)
 
-### JavaScript
-No errors or warnings were found when passing though the JSHint validator
-
-![javascript_validator](INSERT LINK)
-
 #### Fixed Bugs
 
 * Two Logout buttons were displaying on the nav bar. The resolution was to delete the duplicated list item.
-* 
-
 
 #### Unfixed Bugs
 
-*
+* None to report 
 
 ## Deployment
 
@@ -310,7 +306,7 @@ The following git commands were used throughout development to push code to the 
 
 ### Content
 
-*
+* API used for currency converter: https://www.geeksforgeeks.org/currency-converter-in-javascript/ 
 
 ### Media
 
