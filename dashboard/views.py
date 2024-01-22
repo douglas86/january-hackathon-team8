@@ -7,13 +7,17 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import UpcomingBill, Income, Expense, Category
+from .models import Expense, Category
+
+from .models import UpcomingBill, Income
+
 from .forms import (EditDashboardForm,
                     IncomeForm,
                     ExpenseForm,
                     ExspenseFilterForm,
                     IncomeFilterForm
                     )
+
 
 # Create your views here.
 class Dashboard(View):
@@ -70,7 +74,7 @@ class DeleteDashboard(DeleteView):
 class IncomeListView(View):
     template_name = 'dashboard/income.html'
 
-    def get(self, request ):
+    def get(self, request):
 
         filter_form = IncomeFilterForm(request.GET)
         income_list = Income.objects.filter(user=request.user)
@@ -78,8 +82,8 @@ class IncomeListView(View):
         if filter_form.is_valid():
             source = filter_form.cleaned_data['source']
             if source:
-               print(source)
-               income_list = income_list.filter(source__in=source)
+                print(source)
+                income_list = income_list.filter(source__in=source)
 
             frequency = filter_form.cleaned_data['frequency']
             if frequency:
@@ -95,7 +99,6 @@ class IncomeListView(View):
                 income_list = income_list.filter(date_received__lte=date_to)
 
             total_amount = sum(income.amount for income in income_list)
-
 
         form = IncomeForm(request.GET)
         forms = [IncomeForm(instance=income) for income in income_list]
@@ -141,11 +144,11 @@ class ExpenseListView(View):
         if filter_form.is_valid():
             source = filter_form.cleaned_data['source']
             if source:
-               expense_list = expense_list.filter(source__in=source)
-           
+                expense_list = expense_list.filter(source__in=source)
+
             categories = filter_form.cleaned_data['categories']
             if categories:
-               expense_list = expense_list.filter(category__in=categories)
+                expense_list = expense_list.filter(category__in=categories)
 
             date_to = filter_form.cleaned_data['date_to']
             date_from = filter_form.cleaned_data['date_from']
@@ -161,13 +164,14 @@ class ExpenseListView(View):
         if request.user.is_authenticated:
             form = ExpenseForm(request.POST)
             forms = [ExpenseForm(instance=expense) for expense in expense_list]
-    
+
             my_list = zip(forms, expense_list)
-            context = {'my_list': my_list, 'form': form, 'expense_filter_form': filter_form, 'total_amount': total_amount}
+            context = {'my_list': my_list, 'form': form, 'expense_filter_form': filter_form,
+                       'total_amount': total_amount}
             return render(request, self.template_name, context)
 
     def post(self, request, pk=None):
-        
+
         if pk:
             expense = get_object_or_404(Expense, pk=pk, user=request.user)
             form = ExpenseForm(request.POST, instance=expense)
@@ -203,5 +207,25 @@ class CurConverter(View):
     template_name = 'dashboard/currency-converter.html'
 
     def get(self, request):
-
         return render(request, self.template_name)
+
+
+class ChartView(View):
+    template_name = 'dashboard/chart.html'
+    model = Expense
+
+    def get(self, request, *args, **kwargs):
+        expenses = Expense.objects.filter(user=request.user)
+        result = [{e.source: e.amount} for e in expenses]
+
+        sums_by_store = {}
+
+        for entry in result:
+            for store, value in entry.items():
+                if store in sums_by_store:
+                    sums_by_store[store] += value
+                else:
+                    sums_by_store[store] = value
+
+        context = {'expenses': expenses, 'sums_by_store': sums_by_store}
+        return render(request, self.template_name, context)
