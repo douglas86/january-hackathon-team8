@@ -1,21 +1,15 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import DeleteView, TemplateView
+from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import UpcomingBill, Income, Expense, Category
-from .forms import EditDashboardForm, IncomeForm, ExpenseForm
+from .models import Expense, Category
 
 from .models import UpcomingBill, Income
-from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
-from django.db import models
-import json
-from django.core.serializers import serialize
 
 from .forms import (EditDashboardForm,
                     IncomeForm,
@@ -216,12 +210,22 @@ class CurConverter(View):
         return render(request, self.template_name)
 
 
-class ChartView(TemplateView):
+class ChartView(View):
     template_name = 'dashboard/chart.html'
     model = Expense
 
     def get(self, request, *args, **kwargs):
         expenses = Expense.objects.filter(user=request.user)
-        context = {'expenses': expenses}
-        return render(request, self.template_name, context)
+        result = [{e.source: e.amount} for e in expenses]
 
+        sums_by_store = {}
+
+        for entry in result:
+            for store, value in entry.items():
+                if store in sums_by_store:
+                    sums_by_store[store] += value
+                else:
+                    sums_by_store[store] = value
+
+        context = {'expenses': expenses, 'sums_by_store': sums_by_store}
+        return render(request, self.template_name, context)

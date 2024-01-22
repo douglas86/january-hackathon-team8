@@ -2,41 +2,25 @@
 {% load static %}
 {% block content %}
 
-    <div style="display:none" id="jsonData" data-json="{{ expenses }}"></div>
+    <div class="tab-container">
+        {% include 'dashboard/includes/dashboard-nav.html' %}
 
-    <div style="margin: 20% auto; width: 50%; height: 50%">
-        <canvas id="myChart"></canvas>
+        <h1 class="text-center title mt-5 text-grey border-bottom">Chart To Display Expenses</h1>
+        <div style="margin: 5% auto; width: 50%; height: 50%">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
-
-    {% for ex in expenses %}
-        <h1>{{ ex }}</h1>
-    {% endfor %}
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-
-        function loadJson(selector) {
-            return JSON.parse(document.querySelector(selector).getAttribute('data-json'))
-        }
-
-        window.onload = function () {
-            let jsonData = loadJson('#jsonData')
-            console.log('data', jsonData)
-        }
-
-
-        const ctx = document.getElementById('myChart');
+        const ctx = document.getElementById('myChart').getContext('2d')
 
         const data = {
-            labels: [
-                'Red',
-                'Blue',
-                'Yellow'
-            ],
+            labels: [{% for e in sums_by_store.keys %}"{{ e }}",{% endfor %}],
             datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
+                label: 'Amount: £',
+                data: [{% for e in sums_by_store.values %}"{{ e }}",{% endfor %}],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
