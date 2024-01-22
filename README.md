@@ -259,7 +259,12 @@ In the future we would like to add,
 
 | Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
 | -------------- | ----------------- | ---------------- | -------------- | --------- |
-| XXXX | XXXX | XXXX | XXXX| XXXX |
+| Login/Logout | Click | Open login or logout page | Opened login or logout page| PASS |
+| Upcoming Bills tab | Click | Open the Upcoming Bills tab | Opened the Upcoming Bills tab| PASS |
+| Expenses tab | Click | Open the Expenses tab | Opened the Expenses tab| PASS |
+| Income tab | Click | Open the Income tab | Opened the Income tab| PASS |
+| Charts tab | Click | Open the Charts tab | Opened the Charts tab| PASS |
+| Currency Converter tab | Click | Open the Currency Converter tab | Opened the Currency Converter tab| PASS |
 
 
 ### Validator Testing
