@@ -308,7 +308,7 @@ The following git commands were used throughout development to push code to the 
 ### Heroku Deployment
 
 - Heroku provides a platform for hosting web applications.
-- The deployed site will update automatically upon new commits to the master branch.
+- The deployed site will update automatically upon new commits to the main branch.
 
 ## Credits
 
