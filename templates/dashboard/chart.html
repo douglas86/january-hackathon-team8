@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+    <div style="display:none" id="jsonData" data-json="{{ expenses }}"></div>
+
     <div style="margin: 20% auto; width: 50%; height: 50%">
         <canvas id="myChart"></canvas>
     </div>
@@ -13,6 +15,17 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
+
+        function loadJson(selector) {
+            return JSON.parse(document.querySelector(selector).getAttribute('data-json'))
+        }
+
+        window.onload = function () {
+            let jsonData = loadJson('#jsonData')
+            console.log('data', jsonData)
+        }
+
+
         const ctx = document.getElementById('myChart');
 
         const data = {
