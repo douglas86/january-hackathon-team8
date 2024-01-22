@@ -277,11 +277,11 @@ No errors or warnings were found when passing through the contrast validator.
 
 #### Fixed Bugs
 
-* Two Logout buttons were displaying on the nav bar. The resolution was to delete the duplicated list item.
+* Two Logout buttons were displayed on the nav bar. The resolution was to delete the duplicated list item.
 
 #### Unfixed Bugs
 
-* When I try to change my email it gives me this error down below
+* When I try to change my email, it gives me this error down below
 
 ![error-when-sending-emails.png](static/images/readme-images/error-when-sending-emails.png)
 
