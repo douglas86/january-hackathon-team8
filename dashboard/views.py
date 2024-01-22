@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UpcomingBill, Income, Expense, Category
-from .forms import EditDashboardForm, IncomeForm, ExpenseForm, CategoryForm
+from .forms import EditDashboardForm, IncomeForm, ExpenseForm
 
 from .models import UpcomingBill, Income
 from .forms import EditDashboardForm, IncomeForm, IncomeFilterForm
