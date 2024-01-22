@@ -263,31 +263,14 @@ In the future we would like to add,
 
 ### Validator Testing
 
-#### HTML
-No errors or warnings were found when passing through the official W3C validator.
-
-![html_validator](INSERT LINK)
-
-#### CSS
-No errors or warnings were found when passing through the official (Jigsaw) validator.
-
-![css_validator](INSERT LINK)
-
 #### WebAim Contrast checker 
 No errors or warnings were found when passing through the contrast validator.
 
 ![contrast_validator](./static/images/readme-images/bb-contrast-val.png)
 
-### JavaScript
-No errors or warnings were found when passing though the JSHint validator
-
-![javascript_validator](INSERT LINK)
-
 #### Fixed Bugs
 
 * Two Logout buttons were displaying on the nav bar. The resolution was to delete the duplicated list item.
-* 
-
 
 #### Unfixed Bugs
 
