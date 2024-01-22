@@ -284,6 +284,14 @@ No errors or warnings were found when passing through the contrast validator.
 
 ![error-when-sending-emails.png](static/images/readme-images/error-when-sending-emails.png)
 
+* When ever I click on the Header logo, it doesn't take me back to the homepage
+
+![error-on-homepage-logo.png](static/images/readme-images/error-on-homepage-logo.png)
+
+* The pound symbol doesn't sit quiet on the same line as the amount
+
+![error-pound-not-on-same-line.png](static/images/readme-images/error-pound-not-on-same-line.png)
+
 ## Deployment
 
 ### Version Control
