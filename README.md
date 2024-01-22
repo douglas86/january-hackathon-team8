@@ -257,14 +257,14 @@ In the future we would like to add,
 * We tested the site, and it works in different web browsers: Chrome, Firefox, and Microsoft Edge.
 * We confirmed that the site is responsive and functions on different screen sizes using the devtools device toolbar.
 
-| Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
-| -------------- | ----------------- | ---------------- | -------------- | --------- |
-| Login/Logout | Click | Open login or logout page | Opened login or logout page| PASS |
-| Upcoming Bills tab | Click | Open the Upcoming Bills tab | Opened the Upcoming Bills tab| PASS |
-| Expenses tab | Click | Open the Expenses tab | Opened the Expenses tab| PASS |
-| Income tab | Click | Open the Income tab | Opened the Income tab| PASS |
-| Charts tab | Click | Open the Charts tab | Opened the Charts tab| PASS |
-| Currency Converter tab | Click | Open the Currency Converter tab | Opened the Currency Converter tab| PASS |
+| Section Tested         | Input To Validate | Expected Outcome                | Actual Outcome                    | Pass/Fail |
+|------------------------|-------------------|---------------------------------|-----------------------------------|-----------|
+| Login/Logout           | Click             | Open login or logout page       | Opened login or logout page       | PASS      |
+| Upcoming Bills tab     | Click             | Open the Upcoming Bills tab     | Opened the Upcoming Bills tab     | PASS      |
+| Expenses tab           | Click             | Open the Expenses tab           | Opened the Expenses tab           | PASS      |
+| Income tab             | Click             | Open the Income tab             | Opened the Income tab             | PASS      |
+| Charts tab             | Click             | Open the Charts tab             | Opened the Charts tab             | PASS      |
+| Currency Converter tab | Click             | Open the Currency Converter tab | Opened the Currency Converter tab | PASS      |
 
 
 ### Validator Testing
@@ -280,7 +280,9 @@ No errors or warnings were found when passing through the contrast validator.
 
 #### Unfixed Bugs
 
-* None to report 
+* When I try to change my email it gives me this error down below
+
+![error-when-sending-emails.png](static/images/readme-images/error-when-sending-emails.png)
 
 ## Deployment
 
