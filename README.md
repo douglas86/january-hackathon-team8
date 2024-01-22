@@ -244,13 +244,14 @@ The website is designed using following technologies: HTML, CSS, Bootstrap, Java
 
 ### Features Left to Implement
 
-In the future we would like to add,
+In the future we would like to add.
 
 * A feature where the user could take a photo of a receipt and the information would autofil the required fields. 
 * An account page the user could customise with a profile picture.
-* A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
+* A more in depth settings section where users could customize the UI of the page including themes and tabs available in the dashboard. 
 * An addition to the profile page where the user can select the currency they wish to view their finances in
-* Add more personalised style to the dashboard tab sections 
+* Add more personalized style to the dashboard tab sections
+* Add tabs for months or years to get a better understanding of what is happening
 
 ## Testing
 
