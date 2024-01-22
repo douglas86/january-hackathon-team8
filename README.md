@@ -250,6 +250,7 @@ In the future we would like to add,
 * An account page the user could customise with a profile picture.
 * A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
 * An addition to the profile page where the user can select the currency they wish to view their finances in
+* Add more personalised style to the dashboard tab sections 
 
 ## Testing
 
@@ -274,7 +275,7 @@ No errors or warnings were found when passing through the contrast validator.
 
 #### Unfixed Bugs
 
-*
+* None to report 
 
 ## Deployment
 
@@ -305,7 +306,7 @@ The following git commands were used throughout development to push code to the 
 
 ### Content
 
-*
+* API used for currency converter: https://www.geeksforgeeks.org/currency-converter-in-javascript/ 
 
 ### Media
 
