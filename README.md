@@ -244,27 +244,28 @@ The website is designed using following technologies: HTML, CSS, Bootstrap, Java
 
 ### Features Left to Implement
 
-In the future we would like to add,
+In the future we would like to add.
 
 * A feature where the user could take a photo of a receipt and the information would autofil the required fields. 
 * An account page the user could customise with a profile picture.
-* A more in depth settings section where users could customise the UI of the page including themes and tabs available in the dashboard. 
+* A more in depth settings section where users could customize the UI of the page including themes and tabs available in the dashboard. 
 * An addition to the profile page where the user can select the currency they wish to view their finances in
-* Add more personalised style to the dashboard tab sections 
+* Add more personalized style to the dashboard tab sections
+* Add tabs for months or years to get a better understanding of what is happening
 
 ## Testing
 
 * We tested the site, and it works in different web browsers: Chrome, Firefox, and Microsoft Edge.
 * We confirmed that the site is responsive and functions on different screen sizes using the devtools device toolbar.
 
-| Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
-| -------------- | ----------------- | ---------------- | -------------- | --------- |
-| Login/Logout | Click | Open login or logout page | Opened login or logout page| PASS |
-| Upcoming Bills tab | Click | Open the Upcoming Bills tab | Opened the Upcoming Bills tab| PASS |
-| Expenses tab | Click | Open the Expenses tab | Opened the Expenses tab| PASS |
-| Income tab | Click | Open the Income tab | Opened the Income tab| PASS |
-| Charts tab | Click | Open the Charts tab | Opened the Charts tab| PASS |
-| Currency Converter tab | Click | Open the Currency Converter tab | Opened the Currency Converter tab| PASS |
+| Section Tested         | Input To Validate | Expected Outcome                | Actual Outcome                    | Pass/Fail |
+|------------------------|-------------------|---------------------------------|-----------------------------------|-----------|
+| Login/Logout           | Click             | Open login or logout page       | Opened login or logout page       | PASS      |
+| Upcoming Bills tab     | Click             | Open the Upcoming Bills tab     | Opened the Upcoming Bills tab     | PASS      |
+| Expenses tab           | Click             | Open the Expenses tab           | Opened the Expenses tab           | PASS      |
+| Income tab             | Click             | Open the Income tab             | Opened the Income tab             | PASS      |
+| Charts tab             | Click             | Open the Charts tab             | Opened the Charts tab             | PASS      |
+| Currency Converter tab | Click             | Open the Currency Converter tab | Opened the Currency Converter tab | PASS      |
 
 
 ### Validator Testing
@@ -276,11 +277,21 @@ No errors or warnings were found when passing through the contrast validator.
 
 #### Fixed Bugs
 
-* Two Logout buttons were displaying on the nav bar. The resolution was to delete the duplicated list item.
+* Two Logout buttons were displayed on the nav bar. The resolution was to delete the duplicated list item.
 
 #### Unfixed Bugs
 
-* None to report 
+* When I try to change my email, it gives me this error down below
+
+![error-when-sending-emails.png](static/images/readme-images/error-when-sending-emails.png)
+
+* When ever I click on the Header logo, it doesn't take me back to the homepage
+
+![error-on-homepage-logo.png](static/images/readme-images/error-on-homepage-logo.png)
+
+* The pound symbol doesn't sit quiet on the same line as the amount
+
+![error-pound-not-on-same-line.png](static/images/readme-images/error-pound-not-on-same-line.png)
 
 ## Deployment
 
@@ -297,7 +308,7 @@ The following git commands were used throughout development to push code to the 
 ### Heroku Deployment
 
 - Heroku provides a platform for hosting web applications.
-- The deployed site will update automatically upon new commits to the master branch.
+- The deployed site will update automatically upon new commits to the main branch.
 
 ## Credits
 

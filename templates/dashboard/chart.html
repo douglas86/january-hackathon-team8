@@ -19,7 +19,7 @@
         const data = {
             labels: [{% for e in sums_by_store.keys %}"{{ e }}",{% endfor %}],
             datasets: [{
-                label: 'Amount: £',
+                label: 'Amount £',
                 data: [{% for e in sums_by_store.values %}"{{ e }}",{% endfor %}],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
