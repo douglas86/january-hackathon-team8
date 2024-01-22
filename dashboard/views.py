@@ -24,6 +24,7 @@ from .forms import (EditDashboardForm,
                     IncomeFilterForm
                     )
 
+
 # Create your views here.
 class Dashboard(View):
     """
@@ -149,11 +150,11 @@ class ExpenseListView(View):
         if filter_form.is_valid():
             source = filter_form.cleaned_data['source']
             if source:
-               expense_list = expense_list.filter(source__in=source)
+                expense_list = expense_list.filter(source__in=source)
 
             categories = filter_form.cleaned_data['categories']
             if categories:
-               expense_list = expense_list.filter(category__in=categories)
+                expense_list = expense_list.filter(category__in=categories)
 
             date_to = filter_form.cleaned_data['date_to']
             date_from = filter_form.cleaned_data['date_from']
@@ -171,7 +172,8 @@ class ExpenseListView(View):
             forms = [ExpenseForm(instance=expense) for expense in expense_list]
 
             my_list = zip(forms, expense_list)
-            context = {'my_list': my_list, 'form': form, 'expense_filter_form': filter_form, 'total_amount': total_amount}
+            context = {'my_list': my_list, 'form': form, 'expense_filter_form': filter_form,
+                       'total_amount': total_amount}
             return render(request, self.template_name, context)
 
     def post(self, request, pk=None):
@@ -214,27 +216,12 @@ class CurConverter(View):
         return render(request, self.template_name)
 
 
-class ChartListView(View):
+class ChartView(TemplateView):
     template_name = 'dashboard/chart.html'
-
-    def get_context_data(self, **kwargs):
-        # context = super().get_context_data(**kwargs)
-        expenses = Expense.objects.values('category').annotate(total=models.Sum('amount'))
-        expense_list = list(expenses)
-        json_response = JsonResponse(expense_list, safe=False)
-        return {'json_response': json_response}
+    model = Expense
 
     def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
+        expenses = Expense.objects.filter(user=request.user)
+        context = {'expenses': expenses}
         return render(request, self.template_name, context)
-
-
-
-
-
-
-
-
-
-
 
