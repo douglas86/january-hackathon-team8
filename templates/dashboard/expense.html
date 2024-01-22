@@ -7,18 +7,19 @@
             {% include 'dashboard/includes/dashboard-nav.html' %}
 
             <div class="tab-content">
+                <div class="row mt-5 mx-0">
+                    <div class="col-12 col-xl-8">
                 {#            Expenses tab Content#}
                 <div class="container tab-pane active" id="upcomingBills">
                     <section class="dashboard">
                         <div class="w-100 d-flex justify-content-between">
+                            <h1 class="d-inline">Expenses</h1>
+
                             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#new_expense">New
                                 Expense <i
                                         class="fa-solid fa-plus border rounded-5 p-1 "></i></button>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new_category">New
-                                Category <i
-                                        class="fa-solid fa-plus border rounded-5 p-1 "></i></button>
+                            
                         </div>
-
                         {# New Expense Modal#}
                         <div class="modal fade income_form" id="new_expense" tabindex="-1" role="dialog"
                              aria-labelledby="editModalLabel" aria-hidden="true">
@@ -40,29 +41,9 @@
                             </div>
                         </div>
 
-                        {# New Category Modal#}
-                        <div class="modal fade income_form" id="new_category" tabindex="-1" role="dialog"
-                             aria-labelledby="editModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title fs-5" id="exampleModalLabel">{{ user }}'s Expense</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <form id="category_form" method="post" action="{% url 'category' %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="form_identifier" value="category_form">
-                                        {{ category_form.as_p }}
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
 
-                        <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -147,10 +128,31 @@
                             {% endfor %}
                             </tbody>
                         </table>
+                    </div>
                     </section>
                 </div>
             </div>
+       
+
+        <div class="col-12 col-xl-3 border bg-light p-2 mr-3">
+            <div class="filter-form ">
+                <h2 class="title w-100 border-bottom">Filter</h2>
+                <form method="get"  action="{% url 'expense' %}">
+                    {% csrf_token %}
+                    {{ expense_filter_form.as_p }}
+
+                    <a href="{% url 'expense' %}" class="btn btn-secondary">Reset
+                    </a>
+                    <button type="submit"
+                            class="btn btn-primary">filter
+                    </button>
+                </form>
+
+                <h3 class="title border-bottom">Results:</h3>
+                <h5 class="text-center mt-3 border p-3">Total amount: £ {{ total_amount }}</h5>
+            </div>
         </div>
+    </div>
     {% else %}
         <section id="hero" class="d-flex justify-content-center align-items-center vh-100">
             <div class="hero-text-box text-center">
